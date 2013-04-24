@@ -16,7 +16,7 @@ public class JoonistaFreim extends JFrame {
 	{		
 	    setScreenSize();
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setTitle("KosmoseOdüsseia");
+	    setTitle("KosmoseOdÃ¼sseia");
 	    setVisible(true);
 	    setResizable(true);
 	    
