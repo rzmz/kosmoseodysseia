@@ -1,11 +1,14 @@
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class JoonistaFreim extends JFrame {
 	
@@ -13,9 +16,13 @@ public class JoonistaFreim extends JFrame {
 	{		
 	    setScreenSize();
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setTitle("KosmoseOdÃ¼sseia");
+	    setTitle("KosmoseOdüsseia");
 	    setVisible(true);
 	    setResizable(true);
+	    
+	    Container sisu = getContentPane();
+	    sisu.setLayout(new FlowLayout());
+	    JLabel silt = new JLabel("JLabel");
 	}
 
 	private void setScreenSize(){
@@ -37,7 +44,6 @@ public class JoonistaFreim extends JFrame {
 		for(int j = 0; j < getHeight(); j = j + 10) {
 			g2.drawLine(0, j, getWidth(), j);			
 		}
-		
 	}
 	
 	private static final long serialVersionUID = 1L;

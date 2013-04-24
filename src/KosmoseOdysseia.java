@@ -8,7 +8,7 @@ public class KosmoseOdysseia {
 	
 	public void Alusta() {
 
-		// Sonade listi genereerimine
+		// Sõnade listi genereerimine
 		String sonad[] = {
 				"süstik - Tiibadega kosmoseaparaat",
 				"estcube - Kuulus tudengisatelliit",
