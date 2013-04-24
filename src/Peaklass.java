@@ -1,9 +1,10 @@
 
 public class Peaklass {
-	// See on peameetod, mis kutsutakse v‰lja programmi k‰ivitumisel.
+	// See on peameetod, mis kutsutakse v√§lja programmi k√§ivitumisel.
+	// Prooviks ka midagi kommittida siis
 	public static void main(String[] args) {
 		System.out.println("Tere tulemast, kartmatu piloot!");
-		System.out.println("M‰ngu eesm‰rgiks on tunda kosmoseteemalist teooriat ning saata rakett kuule.");
+		System.out.println("M√§ngu eesm√§rgiks on tunda kosmoseteemalist teooriat ning saata rakett kuule.");
 		KosmoseOdysseia mang = new KosmoseOdysseia();
 		mang.Alusta();
 	}
