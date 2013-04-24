@@ -3,8 +3,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.Point;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -16,25 +14,13 @@ public class JoonistaFreim extends JFrame {
 	    setScreenSize();
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setTitle("KosmoseOdüsseia");
-	    setLocation(new Point(0,0));
 	    setVisible(true);
 	    setResizable(true);
-	    
 	}
 
 	private void setScreenSize(){
-        final GraphicsConfiguration config = getGraphicsConfiguration();
-
-        final int left = Toolkit.getDefaultToolkit().getScreenInsets(config).left;
-        final int right = Toolkit.getDefaultToolkit().getScreenInsets(config).right;
-        final int top = Toolkit.getDefaultToolkit().getScreenInsets(config).top;
-        final int bottom = Toolkit.getDefaultToolkit().getScreenInsets(config).bottom;
-
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        final int width = screenSize.width - left - right;
-        final int height = screenSize.height - top - bottom;
-
-        setSize(width, height);
+        setSize(screenSize.width, screenSize.height);
 	}
 	
 	public void paint(Graphics g){
