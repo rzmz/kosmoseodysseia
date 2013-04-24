@@ -9,7 +9,7 @@ public class KosmoseOdysseia {
 	public void Alusta() {
 
 		// Sonade listi genereerimine
-		String sõnad[] = {
+		String sonad[] = {
 				"süstik - Tiibadega kosmoseaparaat",
 				"estcube - Kuulus tudengisatelliit",
 				"gravitatsioonikonstant - Konstant, mis iseloomustab raskusjõu tugevust",
@@ -22,44 +22,44 @@ public class KosmoseOdysseia {
 				"astronoomia - Teadusharu, mis uurib kosmilisi objekte ja universumit tervikuna",
 				"meteoroloogia - Teadusharu, mis uurib atmosfääri",
 				"atmosfäär - Maad ümbritsev kihilise ehitusega õhukest, mis koosneb erinevatest gaasidest ning seda hoiab kinni gravitatsioonijõud",
-				"tehiskaaslane - MĆµne planeedi vĆµi selle loodusliku kaaslase gravitatsioonivĆ¤ljas mingil kindlal orbiidil tiirlev kosmoseaparaat",
-				"Apollo - NASA kosmoselendude programm aastatel 1961Ā–1975, mille kĆ¤igus sooritati kuus mehitatud lendu Kuule",
-				"Hubble - 1990. aastal kĆ¤ivitatud kosmoseobservatooriumi, mis tiirleb kosmoses Ć¼mber maakera, nimi",
-				"Curiosity - 2011. aastal kĆ¤ivitatud mehitamata marsikulgur",
-				"Gagarin - NĆµukogude kosmonaut, kellest 1961. aastal sai esimene kosmoses kĆ¤inud inimene",
+				"tehiskaaslane - Mõne planeedi või selle loodusliku kaaslase gravitatsiooniväljas mingil kindlal orbiidil tiirlev kosmoseaparaat",
+				"Apollo - NASA kosmoselendude programm aastatel 1961–1975, mille käigus sooritati kuus mehitatud lendu Kuule",
+				"Hubble - 1990. aastal käivitatud kosmoseobservatooriumi, mis tiirleb kosmoses ümber maakera, nimi",
+				"Curiosity - 2011. aastal käivitatud mehitamata marsikulgur",
+				"Gagarin - Nõukogude kosmonaut, kellest 1961. aastal sai esimene kosmoses käinud inimene",
 				"Armstrong - USA astronaut, esimene inimene, kes astus Kuu pinnale",
-				"aeronautika - Ć•hust kergemaid lennuvahendeid: Ćµhupalle, Ćµhulaevu, stratostaate jms. rakendav lennunduse haru",
-				"kosmosesond - Automaatne ja mehitamata kosmoseaparaat, mis on mĆ¤Ć¤ratud kosmoses lendamiseks Maa orbiidi vĆ¤ljas ja muude taevakehade uurimiseks",
-				"kosmodroom - Piiritletud maa-ala (koos ehitiste ja seadmetega) kosmoseaparaatide vĆ¤ljasaatmiseks, vastuvĆµtmiseks, katsetamiseks ja monteerimiseks",
-				"pĆ¤ikesetuul - PĆ¤ikesest lĆ¤htuv laetud osakeste voog",
-				"pĆ¤ikesepuri - Teoreetiline kosmosesĆµiduki kĆ¤itursĆ¼steem, mis kasutab jĆµuallikaks pĆ¤ikesetuule dĆ¼naamilist rĆµhku",
-				"kuumoodul - Kosmoseaparaat, mille otstarve oli missiooni kĆ¤igus kahe astronaudi Kuu pinnale maandamine ja missiooni lĆµppedes orbiidile tagasi lennutamine",
-				"dilĆ¤mmastiktetraoksiid - TeisisĆµnu N2O4. Ć�limĆ¼rgine aine, mida kasutati Apollo kuumoodulis koos Aerozine50'ga kĆ¼tteks",
-				"skafander - Suletav tehiskeskkond, mille eesmĆ¤rk on kaitsta astronauti avakosmoses valitsevate tingimuste eest",
-				"asteroid - vĆ¤ike planeedisarnane taevakeha, mis tiirleb Kepleri seadustele vastavatel orbiitidel Ć¼mber PĆ¤ikese",
-				"meteoriitika - Teadusharu, mis tegeleb meteoriitide ja muude maavĆ¤liste materjalide uurimisega",
-				"tumeaine - Varjatud aine, mida ei ole nĆ¤ha, kuid mida on tunda tema raskusjĆµu tĆµttu",
-				"tumeenergia - Kosmoloogias ja astronoomias hĆ¼poteetiline energiavorm, mis moodustab suurema osa Universumi koostisest",
-				"Universum -  MaailmakĆµiksus, kĆµikide asjade kogusus. Kosmos ehk maailmaruum, mis sisaldab kogu ainet ja energiat",
-				"Galaktika -  Gravitatsiooniliselt seotud tĆ¤hesĆ¼steem, mis koosneb tĆ¤htedest ja nende jĆ¤Ć¤nustest, tĆ¤htedevahelisest tolmust ja tumedast ainest",
-				"tĆ¤hesĆ¼steem -  TĆ¤htede kooslus, mille puhul koosluse liikmete paigutuse mĆ¤Ć¤rab vahetult tĆ¤htede vastastikune gravitatsioon",
-				"PĆ¤ike - Meie PĆ¤ikesesĆ¼steemi tĆ¤ht",
+				"aeronautika - Õhust kergemaid lennuvahendeid: õhupalle, õhulaevu, stratostaate jms. rakendav lennunduse haru",
+				"kosmosesond - Automaatne ja mehitamata kosmoseaparaat, mis on määratud kosmoses lendamiseks Maa orbiidi väljas ja muude taevakehade uurimiseks",
+				"kosmodroom - Piiritletud maa-ala (koos ehitiste ja seadmetega) kosmoseaparaatide väljasaatmiseks, vastuvõtmiseks, katsetamiseks ja monteerimiseks",
+				"päikesetuul - Päikesest lähtuv laetud osakeste voog",
+				"päikesepuri - Teoreetiline kosmosesõiduki käitursüsteem, mis kasutab jõuallikaks päikesetuule dünaamilist rõhku",
+				"kuumoodul - Kosmoseaparaat, mille otstarve oli missiooni käigus kahe astronaudi Kuu pinnale maandamine ja missiooni lõppedes orbiidile tagasi lennutamine",
+				"dilämmastiktetraoksiid - Teisisõnu N2O4. Ülimürgine aine, mida kasutati Apollo kuumoodulis koos Aerozine50'ga kütteks",
+				"skafander - Suletav tehiskeskkond, mille eesmärk on kaitsta astronauti avakosmoses valitsevate tingimuste eest",
+				"asteroid - Väike planeedisarnane taevakeha, mis tiirleb Kepleri seadustele vastavatel orbiitidel ümber Päikese",
+				"meteoriitika - Teadusharu, mis tegeleb meteoriitide ja muude maaväliste materjalide uurimisega",
+				"tumeaine - Varjatud aine, mida ei ole näha, kuid mida on tunda tema raskusjõu tõttu",
+				"tumeenergia - Kosmoloogias ja astronoomias hüpoteetiline energiavorm, mis moodustab suurema osa Universumi koostisest",
+				"Universum -  Maailmakõiksus, kõikide asjade kogusus. Kosmos ehk maailmaruum, mis sisaldab kogu ainet ja energiat",
+				"Galaktika -  Gravitatsiooniliselt seotud tähesüsteem, mis koosneb tähtedest ja nende jäänustest, tähtedevahelisest tolmust ja tumedast ainest",
+				"tähesüsteem -  Tähtede kooslus, mille puhul koosluse liikmete paigutuse määrab vahetult tähtede vastastikune gravitatsioon",
+				"Päike - Meie Päikesesüsteemi täht",
 				"Maa - Ainuke teadaolev planeet Universumis, kus leidub elu",
 				"Linnutee - Meie galaktika nimi",
-				"Jupiter - PĆ¤ikesesĆ¼steemi kĆµige suurem planeet",
-				"Merkuur - PĆ¤ikesele kĆµige lĆ¤hem ning kĆµige vĆ¤iksem PĆ¤ikesesĆ¼steemi planeet",
-				"Veenus - Maaga peaaegu Ć¼hesuurune ning meile lĆ¤him planeet",
-				"Marss - PĆ¤ikesesĆ¼steemi neljas planeet",
-				"Saturn - PĆ¤ikesesĆ¼steemi kuues planeet",
-				"Uraan - PĆ¤ikesesĆ¼steemi seitsmes planeet",
-				"Neptuun - Kaheksas ja viimane suurtest planeetidest meie pĆ¤ikesesĆ¼steemis",
-				"Pluuto - KĆ¤Ć¤busplaneet, mida kunagi loeti meie PĆ¤ikesesĆ¼steemi Ć¼heksandaks planeediks",
+				"Jupiter - Päikesesüsteemi kõige suurem planeet",
+				"Merkuur - Päikesele kõige lühem ning kõige väiksem Päikesesüsteemi planeet",
+				"Veenus - Maaga peaaegu ühesuurune ning meile lähim planeet",
+				"Marss - Päikesesüsteemi neljas planeet",
+				"Saturn - Päikesesüsteemi kuues planeet",
+				"Uraan - Päikesesüsteemi seitsmes planeet",
+				"Neptuun - Kaheksas ja viimane suurtest planeetidest meie päikesesüsteemis",
+				"Pluuto - Kääbusplaneet, mida kunagi loeti meie Päikesesüsteemi üheksandaks planeediks",
 				"Kuu - Maa looduslik kaaslane",
-				"heliopaus - HeliosfĆ¤Ć¤ri vĆ¤line kiht, kus tĆ¤htedevaheline tuul ja pĆ¤ikesetuul on tasakaalus",
-				"supernoova - Oma arengu lĆµppjĆ¤rku jĆµudnud tĆ¤ht, mille plahvatuse tagajĆ¤rjel tĆ¤he heledus kasvab hetkeliselt miljoneid kordi",
-				"neutrontĆ¤ht - Peamiselt neutronitest koosnev tĆ¤ht" };
+				"heliopaus - Heliosfääri väline kiht, kus tähtedevaheline tuul ja päikesetuul on tasakaalus",
+				"supernoova - Oma arengu lõppjärku jõudnud täht, mille plahvatuse tagajärjel tähe heledus kasvab hetkeliselt miljoneid kordi",
+				"neutrontäht - Peamiselt neutronitest koosnev täht" };
 
-		// Juhusliku sĆµna valimine koos vihjega
+		// Juhusliku sõna valimine koos vihjega
 		String sona_koos_vihjega;
 		Random rand = new Random();
 		int sonaindeks = rand.nextInt(sonad.length);
@@ -70,13 +70,13 @@ public class KosmoseOdysseia {
 		String sona;
 		String kirjeldus;
 
-		// teeme tĆ¼kkideks...
+		// teeme tükkideks...
 		sona_vihje = sona_koos_vihjega.split("-");
 
 		sona = sona_vihje[0].trim().toLowerCase();
 		kirjeldus = sona_vihje[1].trim();
 
-		// Tekitame tĆ¼hikud
+		// Tekitame tühikud
 		String vihje = "";
 		int kriipse = sona.length() + 1;
 		for (int i = 1; i < kriipse; i++) {
@@ -86,12 +86,12 @@ public class KosmoseOdysseia {
 		String arvatudTahed = "";
 		int katseid = 0;
 
-		// Alustame mĆ¤ngu
+		// Alustame mängu
 		Mangi(vihje, katseid, arvatudTahed, sona, kirjeldus);
 	}
 
 	/**
-	 * meetod, mis juhib mĆ¤ngu kĆ¤iku
+	 * meetod, mis juhib mängu käiku
 	 */
 	public void Mangi(String vihje, int katseid, String arvatudTahed, String sona, String kirjeldus) {
 		
@@ -130,7 +130,7 @@ public class KosmoseOdysseia {
 		} else {
 			if (katseid == lubatudKatseteArv) {
 				System.out
-						.println("\n\nSa kaotasid ja rakett ei saanud valmis! SĆµna oli: "
+						.println("\n\nSa kaotasid ja rakett ei saanud valmis! Sõna oli: "
 								+ sona);
 				Kaotus();
 			} else {
@@ -174,7 +174,7 @@ public class KosmoseOdysseia {
 
 	public void MangiUuesti() {
 		Scanner input = new Scanner(System.in);
-		System.out.print("\nKas mĆ¤ngime uuesti?(J/E): ");
+		System.out.print("\nKas mängime uuesti?(J/E): ");
 		String valik = input.next();
 		if (valik.toLowerCase().contains("j")) {
 			Alusta();
@@ -185,7 +185,7 @@ public class KosmoseOdysseia {
 	public void Voit() {
 		//System.out.println("     _\n    /_\\\n   | _ |\n /\\||_||/\\\n | |   | |\n | |   | |\n | |   | |\n |_|___|_|\n / \\   / \\\n");
 		System.out.println("     _\n    /_\\\n   | _ |\n /\\||_||/\\\n | |   | |\n | |   | |\n | |   | |\n |_|___|_|\n / \\   / \\\n |||   |||  \n");
-		System.out.println("Sa vĆµitsid! Rakett startis edukalt!\n");
+		System.out.println("Sa võitsid! Rakett startis edukalt!\n");
 		MangiUuesti();
 	}
 
