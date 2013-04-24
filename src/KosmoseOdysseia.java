@@ -9,19 +9,19 @@ public class KosmoseOdysseia {
 	public void Alusta() {
 
 		// Sonade listi genereerimine
-		String sonad[] = {
-				"sĆ¼stik - Tiibadega kosmoseaparaat",
+		String sõnad[] = {
+				"süstik - Tiibadega kosmoseaparaat",
 				"estcube - Kuulus tudengisatelliit",
-				"gravitatsioonikonstant - Konstant, mis iseloomustab raskusjĆµu tugevust",
-				"paokiirus - VĆ¤him kiirus, millega saab lahkuda taevakeha kĆ¼lgetĆµmbejĆµu mĆµjupiirkonnast",
-				"orbitaaljaam - Kosmoseaparaat, mis tiirleb pikka aega Ć¼mber Maa ja on pidevalt vĆµi ajutiselt mehitatud",
-				"kuupsatelliit - Minitehiskaaslane, mille ruumala on tĆ¤pselt 1 liiter",
+				"gravitatsioonikonstant - Konstant, mis iseloomustab raskusjõu tugevust",
+				"paokiirus - Vähim kiirus, millega saab lahkuda taevakeha külgetõmbejõu mõjupiirkonnast",
+				"orbitaaljaam - Kosmoseaparaat, mis tiirleb pikka aega ümber Maa ja on pidevalt või ajutiselt mehitatud",
+				"kuupsatelliit - Minitehiskaaslane, mille ruumala on täpselt 1 liiter",
 				"kosmonaut - Kosmoselaeva, lennuki liige (Venemaa)",
 				"astronaut - Kosmoselaeva, lennuki liige (USA)",
 				"taikonaut - Kosmoselaeva, lennuki liige (Hiina)",
 				"astronoomia - Teadusharu, mis uurib kosmilisi objekte ja universumit tervikuna",
-				"meteoroloogia - Teadusharu, mis uurib atmosfĆ¤Ć¤ri",
-				"atmosfĆ¤Ć¤r - Maad Ć¼mbritsev kihilise ehitusega Ćµhukest, mis koosneb erinevatest gaasidest ning seda hoiab kinni gravitatsioonijĆµud",
+				"meteoroloogia - Teadusharu, mis uurib atmosfääri",
+				"atmosfäär - Maad ümbritsev kihilise ehitusega õhukest, mis koosneb erinevatest gaasidest ning seda hoiab kinni gravitatsioonijõud",
 				"tehiskaaslane - MĆµne planeedi vĆµi selle loodusliku kaaslase gravitatsioonivĆ¤ljas mingil kindlal orbiidil tiirlev kosmoseaparaat",
 				"Apollo - NASA kosmoselendude programm aastatel 1961Ā–1975, mille kĆ¤igus sooritati kuus mehitatud lendu Kuule",
 				"Hubble - 1990. aastal kĆ¤ivitatud kosmoseobservatooriumi, mis tiirleb kosmoses Ć¼mber maakera, nimi",
