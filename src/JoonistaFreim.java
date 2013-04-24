@@ -1,10 +1,7 @@
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -12,6 +9,8 @@ import javax.swing.JLabel;
 
 public class JoonistaFreim extends JFrame {
 	
+	private static final long serialVersionUID = 6814320761507411061L;
+
 	public JoonistaFreim()
 	{		
 	    setScreenSize();
@@ -22,30 +21,12 @@ public class JoonistaFreim extends JFrame {
 	    
 	    Container sisu = getContentPane();
 	    sisu.setLayout(new FlowLayout());
-	    JLabel silt = new JLabel("JLabel");
+	    JLabel silt = new JLabel("KosmoseOdüsseia");
+	    sisu.add(silt);
 	}
 
 	private void setScreenSize(){
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize.width, screenSize.height);
 	}
-	
-	public void paint(Graphics g){
-		
-		Graphics2D g2 = (Graphics2D)g;
-		g2.setColor(Color.lightGray);
-				
-		// joonistame testiks horisontaalsed gridline'id
-		for(int i = 0; i < getWidth(); i = i + 10) {
-			g2.drawLine(i, 0, i, getHeight());
-		}
-		
-		// joonistame testiks vertikaalsed gridline'id
-		for(int j = 0; j < getHeight(); j = j + 10) {
-			g2.drawLine(0, j, getWidth(), j);			
-		}
-	}
-	
-	private static final long serialVersionUID = 1L;
-
 }
