@@ -1,13 +1,20 @@
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.JTextArea;
+
 
 public class KosmoseOdysseia {
 
 	private int lubatudKatseteArv = 6;
+	private JTextArea _textArea;
+	
+	public KosmoseOdysseia(JTextArea textArea){
+		setTextArea(textArea);
+	}
 	
 	public void Alusta() {
-
+		
 		// Sõnade listi genereerimine
 		String sonad[] = {
 				"süstik - Tiibadega kosmoseaparaat",
@@ -90,6 +97,11 @@ public class KosmoseOdysseia {
 		Mangi(vihje, katseid, arvatudTahed, sona, kirjeldus);
 	}
 
+	private void clearTextArea(){
+		getTextArea().selectAll();
+		getTextArea().replaceSelection("");
+	}
+	
 	/**
 	 * meetod, mis juhib mängu käiku
 	 */
@@ -109,63 +121,71 @@ public class KosmoseOdysseia {
 			man[6] = "     _\n    /_\\\n   | _ |\n   ||_||\'       \n  \n   \n   \n\n";
 			char v1[] = vihje.toCharArray();
 			char s2[] = sona.toCharArray();
-			System.out.println(man[0]);
+			
+			// teeme tekstikasti tühjaks
+			clearTextArea();
+			
+			getTextArea().append(man[0]);
+			
+			String kokku = "";
+			
 			for (int x = 0; x < v1.length; x++) {
-				System.out.print(v1[x]);
+				kokku += v1[x];
 			}
-			System.out.println();
+			
+			getTextArea().append(kokku);
+			
+			getTextArea().append("");
 			Arva(vihje, katseid, arvatudTahed, sona, v1, s2, man, kirjeldus);
 		}
 	}
 
-	public void Arva(String vihje, int katseid, String arvatudTahed,
-			String sona, char v1[], char s2[], String man[], String kirjeldus) {
+	public void Arva(String vihje, int katseid, String arvatudTahed, String sona, char v1[], char s2[], String man[], String kirjeldus) {
 		String tg1 = new String(v1);
 		String tg2 = new String(s2);
 
-		System.out.println("Vihje: " + kirjeldus);
-
-		if (tg1.equals(tg2)) {
-			Voit();
-		} else {
-			if (katseid == lubatudKatseteArv) {
-				System.out
-						.println("\n\nSa kaotasid ja rakett ei saanud valmis! Sõna oli: "
-								+ sona);
-				Kaotus();
-			} else {
-				Scanner input = new Scanner(System.in);
-				String taht = input.next();
-				if (sona.contains(taht)) {
-					if (arvatudTahed.contains(taht)) {
-						katseid += 1;
-						System.out.println("Vale!");
-					} else {
-						int sp = sona.length();
-						for (int i = 0; i < sp; i++) {
-							char aChar = taht.charAt(0);
-							char bChar = s2[i];
-							if (bChar == aChar) {
-								v1[i] = aChar;
-							}
-						}
-					}
-				} else {
-					katseid += 1;
-					System.out.println("Vale!");
-					arvatudTahed += taht;
-				}
-				System.out.println();
-				System.out.println(man[katseid]);
-				for (int x = 0; x < v1.length; x++) {
-					System.out.print(v1[x]);
-				}
-				System.out.println("\n\n");
-				arvatudTahed += taht;
-				Arva(vihje, katseid, arvatudTahed, sona, v1, s2, man, kirjeldus);
-				input.close();
-			}
-		}
+//		System.out.println("Vihje: " + kirjeldus);
+		getTextArea().append("Vihje: " + kirjeldus);
+		
+//		if (tg1.equals(tg2)) {
+//			Voit();
+//		} else {
+//			if (katseid == lubatudKatseteArv) {
+//				System.out.println("\n\nSa kaotasid ja rakett ei saanud valmis! Sõna oli: " + sona);
+//				Kaotus();
+//			} else {
+//				Scanner input = new Scanner(System.in);
+//				String taht = input.next();
+//				if (sona.contains(taht)) {
+//					if (arvatudTahed.contains(taht)) {
+//						katseid += 1;
+//						System.out.println("Vale!");
+//					} else {
+//						int sp = sona.length();
+//						for (int i = 0; i < sp; i++) {
+//							char aChar = taht.charAt(0);
+//							char bChar = s2[i];
+//							if (bChar == aChar) {
+//								v1[i] = aChar;
+//							}
+//						}
+//					}
+//				} else {
+//					katseid += 1;
+//					System.out.println("Vale!");
+//					arvatudTahed += taht;
+//				}
+//				System.out.println();
+//				System.out.println(man[katseid]);
+//				for (int x = 0; x < v1.length; x++) {
+//					System.out.print(v1[x]);
+//				}
+//				System.out.println("\n\n");
+//				arvatudTahed += taht;
+//				Arva(vihje, katseid, arvatudTahed, sona, v1, s2, man, kirjeldus);
+//				input.close();
+//			}
+//		}
 	}
 
 	public void Kaotus() {
@@ -174,7 +194,7 @@ public class KosmoseOdysseia {
 
 	public void MangiUuesti() {
 		Scanner input = new Scanner(System.in);
-		System.out.print("\nKas mängime uuesti?(J/E): ");
+//		System.out.print("\nKas mängime uuesti?(J/E): ");
 		String valik = input.next();
 		if (valik.toLowerCase().contains("j")) {
 			Alusta();
@@ -184,9 +204,15 @@ public class KosmoseOdysseia {
 
 	public void Voit() {
 		//System.out.println("     _\n    /_\\\n   | _ |\n /\\||_||/\\\n | |   | |\n | |   | |\n | |   | |\n |_|___|_|\n / \\   / \\\n");
-		System.out.println("     _\n    /_\\\n   | _ |\n /\\||_||/\\\n | |   | |\n | |   | |\n | |   | |\n |_|___|_|\n / \\   / \\\n |||   |||  \n");
-		System.out.println("Sa võitsid! Rakett startis edukalt!\n");
+//		System.out.println("     _\n    /_\\\n   | _ |\n /\\||_||/\\\n | |   | |\n | |   | |\n | |   | |\n |_|___|_|\n / \\   / \\\n |||   |||  \n");
+//		System.out.println("Sa võitsid! Rakett startis edukalt!\n");
 		MangiUuesti();
+	}
+	public JTextArea getTextArea() {
+		return _textArea;
+	}
+	public void setTextArea(JTextArea _tekst) {
+		this._textArea = _tekst;
 	}
 
 }
