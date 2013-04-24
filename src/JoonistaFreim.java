@@ -12,19 +12,17 @@ import javax.swing.JFrame;
 public class JoonistaFreim extends JFrame {
 	
 	public JoonistaFreim()
-	{
-		
-	    setScreen();
-
-//	    Dimension d = getSize();
-
+	{		
+	    setScreenSize();
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setTitle("KosmoseOdüsseia");
 	    setLocation(new Point(0,0));
 	    setVisible(true);
+	    setResizable(true);
+	    
 	}
 
-	private void setScreen(){
+	private void setScreenSize(){
         final GraphicsConfiguration config = getGraphicsConfiguration();
 
         final int left = Toolkit.getDefaultToolkit().getScreenInsets(config).left;
@@ -36,10 +34,7 @@ public class JoonistaFreim extends JFrame {
         final int width = screenSize.width - left - right;
         final int height = screenSize.height - top - bottom;
 
-        setResizable(false);
         setSize(width, height);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       
-        setVisible(true);		
 	}
 	
 	public void paint(Graphics g){
