@@ -84,7 +84,7 @@ public class KosmoseOdysseia extends Nupukuular{
 		String vihje = "";
 		int kriipse = sona.length() + 1;
 		for (int i = 1; i < kriipse; i++) {
-			vihje += "- ";
+			vihje += "-";
 		}
 
 		String arvatudTahed = "";
@@ -99,6 +99,7 @@ public class KosmoseOdysseia extends Nupukuular{
 		getTextArea().replaceSelection("");
 	}
 
+	
 	/**
 	 * meetod, mis juhib mängu käiku
 	 * @throws InterruptedException 
@@ -179,12 +180,12 @@ public class KosmoseOdysseia extends Nupukuular{
 				}
 				System.out.println();
 //				System.out.println(man[katseid]);
-//				String S = null;
+				String S = "";
 				for (int x = 0; x < v1.length; x++) {
 					System.out.print(v1[x]);
-//					S+=v1[x]; 					
+					S+=v1[x]; 					
 				}
-//				getTextArea().append(S);
+				getTextArea().replaceRange(S,115,115+S.length());
 				System.out.println("\n\n");
 				arvatudTahed += taht;
 				taht="";
@@ -198,19 +199,17 @@ public class KosmoseOdysseia extends Nupukuular{
 	}
 
 	public void MangiUuesti() {
-//		Scanner input = new Scanner(System.in);
-//		System.out.print("\nKas mängime uuesti?(J/E): ");
+		System.out.print("\nKas mängime uuesti?(J/E): ");
 //		String valik = input.next();
 //		if (valik.toLowerCase().contains("j")) {
 //			Alusta();
 //		}
-//		input.close();
 	}
 
 	public void Voit() {
 		// System.out.println("     _\n    /_\\\n   | _ |\n /\\||_||/\\\n | |   | |\n | |   | |\n | |   | |\n |_|___|_|\n / \\   / \\\n");
 		// System.out.println("     _\n    /_\\\n   | _ |\n /\\||_||/\\\n | |   | |\n | |   | |\n | |   | |\n |_|___|_|\n / \\   / \\\n |||   |||  \n");
-		// System.out.println("Sa võitsid! Rakett startis edukalt!\n");
+		System.out.println("Sa võitsid! Rakett startis edukalt!\n");
 		MangiUuesti();
 	}
 
