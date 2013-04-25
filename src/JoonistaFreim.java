@@ -6,7 +6,7 @@ public class JoonistaFreim extends JFrame {
 	
 	private static final long serialVersionUID = 6814320761507411061L;
 
-	public JoonistaFreim() throws InterruptedException
+	public JoonistaFreim()
 	{		
 	    setScreenSize();
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,7 +20,7 @@ public class JoonistaFreim extends JFrame {
 	    container.add(paneel1, BorderLayout.NORTH);
 	    
 	    JTextArea textArea = new JTextArea("Tekst", getHeight()/24, getWidth()/12);
-	    textArea.setFont(new Font("Courier", Font.PLAIN, 11));
+	    textArea.setFont(new Font("Courier", Font.PLAIN, 12));
 	    textArea.setEditable(false);
 	    textArea.setLineWrap(true);
 	    textArea.setWrapStyleWord(true);
@@ -134,7 +134,12 @@ public class JoonistaFreim extends JFrame {
 		paneel3.add(paneel2);
 		container.add(paneel3, BorderLayout.CENTER);
 		setVisible(true);
-		mang.Alusta();
+		try {
+			mang.Alusta();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	    setVisible(true);
 

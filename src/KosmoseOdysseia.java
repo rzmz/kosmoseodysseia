@@ -1,7 +1,9 @@
 import java.util.Random;
+
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-public class KosmoseOdysseia extends Nupukuular{
+public class KosmoseOdysseia extends Nupukuular {
 
 	private int lubatudKatseteArv = 6;
 	private JTextArea _textArea;
@@ -99,16 +101,16 @@ public class KosmoseOdysseia extends Nupukuular{
 		getTextArea().replaceSelection("");
 	}
 
-	
 	/**
 	 * meetod, mis juhib mängu käiku
-	 * @throws InterruptedException 
+	 * 
+	 * @throws InterruptedException
 	 */
 	public void Mangi(String vihje, int katseid, String arvatudTahed,
-			String sona, String kirjeldus) throws InterruptedException {
+			String sona, String kirjeldus) {
 
 		if (katseid == lubatudKatseteArv) {
-			Kaotus();
+			Kaotus(sona);
 		} else {
 			// tekitame raketi massiivi
 			String man[] = new String[7];
@@ -137,12 +139,16 @@ public class KosmoseOdysseia extends Nupukuular{
 
 			getTextArea().append("");
 			getTextArea().append("\nVihje: " + kirjeldus);
+			kuvaKatseid(6);
+			for (int i = 0; i < 60; i++) {
+				getTextArea().append(" ");
+			}
 			Arva(vihje, katseid, arvatudTahed, sona, v1, s2, man, kirjeldus);
 		}
 	}
 
 	public void Arva(String vihje, int katseid, String arvatudTahed,
-			String sona, char v1[], char s2[], String man[], String kirjeldus) throws InterruptedException {
+			String sona, char v1[], char s2[], String man[], String kirjeldus) {
 		String tg1 = new String(v1);
 		String tg2 = new String(s2);
 
@@ -150,20 +156,55 @@ public class KosmoseOdysseia extends Nupukuular{
 			Voit();
 		} else {
 			if (katseid == lubatudKatseteArv) {
-				System.out
-						.println("\n\nSa kaotasid ja rakett ei saanud valmis! Sõna oli: "
-								+ sona);
-				Kaotus();
+				Kaotus(sona);
 			} else {
-				while(taht==""){
-					Thread.sleep(100);
+				while (taht == "") {
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-				System.out.println(taht);
 				if (sona.contains(taht)) {
 					if (arvatudTahed.contains(taht)) {
 						katseid += 1;
-						System.out.println("Vale!");
-					} else {
+						String error = "Vale! Sa oled juba seda tähte pakkunud!";
+						getTextArea().replaceRange(
+								"                                      ",
+								142 + v1.length + kirjeldus.length(),
+								142 + v1.length + kirjeldus.length()
+										+ error.length());
+						try {
+							Thread.sleep(300);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						getTextArea().replaceRange(
+								error,
+								142 + v1.length + kirjeldus.length(),
+								142 + v1.length + kirjeldus.length()
+										+ error.length());
+					} else {						
+						String error = "Õige!                                   ";
+						getTextArea().replaceRange(
+								"                                      ",
+								142 + v1.length + kirjeldus.length(),
+								142 + v1.length + kirjeldus.length()
+										+ error.length());
+						try {
+							Thread.sleep(300);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						getTextArea().replaceRange(
+								error,
+								142 + v1.length + kirjeldus.length(),
+								142 + v1.length + kirjeldus.length()
+										+ error.length());
+						
 						int sp = sona.length();
 						for (int i = 0; i < sp; i++) {
 							char aChar = taht.charAt(0);
@@ -175,42 +216,80 @@ public class KosmoseOdysseia extends Nupukuular{
 					}
 				} else {
 					katseid += 1;
-					System.out.println("Vale!");
+					String error = "Vale! Sellist tähte ei ole sõnas!     ";
+					getTextArea().replaceRange(
+							"                                      ",
+							142 + v1.length + kirjeldus.length(),
+							142 + v1.length + kirjeldus.length()
+									+ error.length());
+					try {
+						Thread.sleep(300);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					getTextArea().replaceRange(
+							error,
+							142 + v1.length + kirjeldus.length(),
+							142 + v1.length + kirjeldus.length()
+									+ error.length());
 					arvatudTahed += taht;
 				}
 				System.out.println();
-//				System.out.println(man[katseid]);
+				// System.out.println(man[katseid]);
 				String S = "";
 				for (int x = 0; x < v1.length; x++) {
-					System.out.print(v1[x]);
-					S+=v1[x]; 					
+					S += v1[x];
 				}
-				getTextArea().replaceRange(S,115,115+S.length());
-				System.out.println("\n\n");
+				getTextArea().replaceRange(S, 115, 115 + S.length());
 				arvatudTahed += taht;
-				taht="";
+				taht = "";
 				Arva(vihje, katseid, arvatudTahed, sona, v1, s2, man, kirjeldus);
 			}
 		}
 	}
 
-	public void Kaotus() {
-		MangiUuesti();
-	}
-
-	public void MangiUuesti() {
-		System.out.print("\nKas mängime uuesti?(J/E): ");
-//		String valik = input.next();
-//		if (valik.toLowerCase().contains("j")) {
-//			Alusta();
-//		}
+	public void Kaotus(String sona) {
+		int reply = JOptionPane.showConfirmDialog(null,
+				"Sa kaotasid..\nSõna oli '"+sona+"'.\nKas mängime uuesti?", "Boohoo :(",
+				JOptionPane.YES_NO_OPTION);
+		if (reply == JOptionPane.YES_OPTION) {
+			try {
+				Thread.sleep(500);
+				Alusta();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			System.exit(0);
+		}
 	}
 
 	public void Voit() {
-		// System.out.println("     _\n    /_\\\n   | _ |\n /\\||_||/\\\n | |   | |\n | |   | |\n | |   | |\n |_|___|_|\n / \\   / \\\n");
-		// System.out.println("     _\n    /_\\\n   | _ |\n /\\||_||/\\\n | |   | |\n | |   | |\n | |   | |\n |_|___|_|\n / \\   / \\\n |||   |||  \n");
-		System.out.println("Sa võitsid! Rakett startis edukalt!\n");
-		MangiUuesti();
+		int reply = JOptionPane.showConfirmDialog(null,
+				"Sa võitsid!\nKas mängime uuesti?", "Yeahh!",
+				JOptionPane.YES_NO_OPTION);
+		if (reply == JOptionPane.YES_OPTION) {
+			try {
+				Thread.sleep(500);
+				Alusta();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			System.exit(0);
+		}
+	}
+	
+	public void kuvaKatseid(int katseteArv){
+		if (katseteArv==6){
+			getTextArea().append("\nKatseid jäänud: 6\n");
+		}
+		else{
+			getTextArea().replaceRange(Integer.toString(katseteArv), 200,201);
+		}
 	}
 
 	public JTextArea getTextArea() {
