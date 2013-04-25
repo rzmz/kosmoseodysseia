@@ -1,36 +1,34 @@
-
 import java.awt.*;
 import javax.swing.*;
 
 public class JoonistaFreim extends JFrame {
-	
+
 	private static final long serialVersionUID = 6814320761507411061L;
 
-	public JoonistaFreim()
-	{		
-	    setScreenSize();
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setTitle("KosmoseOdüsseia");
-	    setResizable(false);
-	    
-	    Container container = getContentPane();
-	    container.setLayout(new BorderLayout());
-	    
-	    JPanel paneel1 = new JPanel();
-	    container.add(paneel1, BorderLayout.NORTH);
-	    
-	    JTextArea textArea = new JTextArea("Tekst", getHeight()/24, getWidth()/12);
-	    textArea.setFont(new Font("Courier", Font.PLAIN, 12));
-	    textArea.setEditable(false);
-	    textArea.setLineWrap(true);
-	    textArea.setWrapStyleWord(true);
-	    paneel1.add(new JScrollPane(textArea));
-	    
-	    textArea.selectAll();
-	    textArea.replaceSelection("kala");
-	    
+	public JoonistaFreim() {
+		setScreenSize();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("KosmoseOdüsseia");
+		setResizable(false);
+
+		Container container = getContentPane();
+		container.setLayout(new BorderLayout());
+
+		JPanel paneel1 = new JPanel();
+		container.add(paneel1, BorderLayout.NORTH);
+
+		JTextArea textArea = new JTextArea("Tekst", getHeight() / 24,
+				getWidth() / 12);
+		textArea.setFont(new Font("Courier", Font.PLAIN, 12));
+		textArea.setEditable(false);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		paneel1.add(new JScrollPane(textArea));
+		textArea.selectAll();
+		textArea.replaceSelection("kala");
+
 		KosmoseOdysseia mang = new KosmoseOdysseia(textArea);
-		
+
 		JButton A = new JButton("A");
 		JButton B = new JButton("B");
 		JButton C = new JButton("C");
@@ -50,17 +48,17 @@ public class JoonistaFreim extends JFrame {
 		JButton Q = new JButton("Q");
 		JButton R = new JButton("R");
 		JButton S = new JButton("S");
-		JButton Š = new JButton("Š");
+		JButton Ss = new JButton("Š");
 		JButton Z = new JButton("Z");
-		JButton Ž = new JButton("Ž");
+		JButton Zz = new JButton("Ž");
 		JButton T = new JButton("T");
 		JButton U = new JButton("U");
 		JButton V = new JButton("V");
 		JButton W = new JButton("W");
-		JButton Õ = new JButton("Õ");
-		JButton Ä = new JButton("Ä");
-		JButton Ö = new JButton("Ö");
-		JButton Ü = new JButton("Ü");
+		JButton Oo = new JButton("Õ");
+		JButton Aa = new JButton("Ä");
+		JButton Oi = new JButton("Ö");
+		JButton Uu = new JButton("Ü");
 		JButton X = new JButton("X");
 		JButton Y = new JButton("Y");
 
@@ -83,20 +81,20 @@ public class JoonistaFreim extends JFrame {
 		Q.addActionListener(new Nupukuular());
 		R.addActionListener(new Nupukuular());
 		S.addActionListener(new Nupukuular());
-		Š.addActionListener(new Nupukuular());
+		Ss.addActionListener(new Nupukuular());
 		Z.addActionListener(new Nupukuular());
-		Ž.addActionListener(new Nupukuular());
+		Zz.addActionListener(new Nupukuular());
 		T.addActionListener(new Nupukuular());
 		U.addActionListener(new Nupukuular());
 		V.addActionListener(new Nupukuular());
 		W.addActionListener(new Nupukuular());
-		Õ.addActionListener(new Nupukuular());
-		Ä.addActionListener(new Nupukuular());
-		Ö.addActionListener(new Nupukuular());
-		Ü.addActionListener(new Nupukuular());
+		Oo.addActionListener(new Nupukuular());
+		Aa.addActionListener(new Nupukuular());
+		Oi.addActionListener(new Nupukuular());
+		Uu.addActionListener(new Nupukuular());
 		X.addActionListener(new Nupukuular());
 		Y.addActionListener(new Nupukuular());
-		
+
 		JPanel paneel2 = new JPanel(new GridLayout(4, 8));
 		JPanel paneel3 = new JPanel(new FlowLayout());
 		paneel2.add(A);
@@ -118,17 +116,17 @@ public class JoonistaFreim extends JFrame {
 		paneel2.add(Q);
 		paneel2.add(R);
 		paneel2.add(S);
-		paneel2.add(Š);
+		paneel2.add(Ss);
 		paneel2.add(Z);
-		paneel2.add(Ž);
+		paneel2.add(Zz);
 		paneel2.add(T);
 		paneel2.add(U);
 		paneel2.add(V);
 		paneel2.add(W);
-		paneel2.add(Õ);
-		paneel2.add(Ä);
-		paneel2.add(Ö);
-		paneel2.add(Ü);
+		paneel2.add(Oo);
+		paneel2.add(Aa);
+		paneel2.add(Oi);
+		paneel2.add(Uu);
 		paneel2.add(X);
 		paneel2.add(Y);
 		paneel3.add(paneel2);
@@ -141,12 +139,13 @@ public class JoonistaFreim extends JFrame {
 			e.printStackTrace();
 		}
 
-	    setVisible(true);
+		setVisible(true);
 
 	}
 
-	private void setScreenSize(){
-        final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(600, 500);
+	private void setScreenSize() {
+		final Dimension screenSize = Toolkit.getDefaultToolkit()
+				.getScreenSize();
+		setSize(600, 500);
 	}
 }
