@@ -1,21 +1,16 @@
 import java.util.Random;
 import javax.swing.JTextArea;
 
-public class KosmoseOdysseia {
+public class KosmoseOdysseia extends Nupukuular{
 
 	private int lubatudKatseteArv = 6;
 	private JTextArea _textArea;
-	private String taht;
 
 	public KosmoseOdysseia(JTextArea textArea) {
 		setTextArea(textArea);
 	}
 
-	public KosmoseOdysseia() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public void Alusta() {
+	public void Alusta() throws InterruptedException {
 
 		// Sõnade listi genereerimine
 		String sonad[] = {
@@ -106,9 +101,10 @@ public class KosmoseOdysseia {
 
 	/**
 	 * meetod, mis juhib mängu käiku
+	 * @throws InterruptedException 
 	 */
 	public void Mangi(String vihje, int katseid, String arvatudTahed,
-			String sona, String kirjeldus) {
+			String sona, String kirjeldus) throws InterruptedException {
 
 		if (katseid == lubatudKatseteArv) {
 			Kaotus();
@@ -139,16 +135,15 @@ public class KosmoseOdysseia {
 			getTextArea().append(kokku);
 
 			getTextArea().append("");
+			getTextArea().append("\nVihje: " + kirjeldus);
 			Arva(vihje, katseid, arvatudTahed, sona, v1, s2, man, kirjeldus);
 		}
 	}
 
 	public void Arva(String vihje, int katseid, String arvatudTahed,
-			String sona, char v1[], char s2[], String man[], String kirjeldus) {
+			String sona, char v1[], char s2[], String man[], String kirjeldus) throws InterruptedException {
 		String tg1 = new String(v1);
 		String tg2 = new String(s2);
-
-		getTextArea().append("\nVihje: " + kirjeldus);
 
 		if (tg1.equals(tg2)) {
 			Voit();
@@ -159,7 +154,10 @@ public class KosmoseOdysseia {
 								+ sona);
 				Kaotus();
 			} else {
-				taht=Nupukuular.getTaht();
+				while(taht==""){
+					Thread.sleep(100);
+				}
+				System.out.println(taht);
 				if (sona.contains(taht)) {
 					if (arvatudTahed.contains(taht)) {
 						katseid += 1;
@@ -180,12 +178,16 @@ public class KosmoseOdysseia {
 					arvatudTahed += taht;
 				}
 				System.out.println();
-				System.out.println(man[katseid]);
+//				System.out.println(man[katseid]);
+//				String S = null;
 				for (int x = 0; x < v1.length; x++) {
 					System.out.print(v1[x]);
+//					S+=v1[x]; 					
 				}
+//				getTextArea().append(S);
 				System.out.println("\n\n");
 				arvatudTahed += taht;
+				taht="";
 				Arva(vihje, katseid, arvatudTahed, sona, v1, s2, man, kirjeldus);
 			}
 		}

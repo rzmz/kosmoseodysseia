@@ -6,7 +6,7 @@ public class JoonistaFreim extends JFrame {
 	
 	private static final long serialVersionUID = 6814320761507411061L;
 
-	public JoonistaFreim()
+	public JoonistaFreim() throws InterruptedException
 	{		
 	    setScreenSize();
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
