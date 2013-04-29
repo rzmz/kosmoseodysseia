@@ -7,6 +7,7 @@ public class KosmoseOdysseia extends Nupukuular {
 
 	private int lubatudKatseteArv = 6;
 	private JTextArea _textArea;
+	int a = 145;
 
 	public KosmoseOdysseia(JTextArea textArea) {
 		setTextArea(textArea);
@@ -93,6 +94,7 @@ public class KosmoseOdysseia extends Nupukuular {
 		int katseid = 0;
 
 		// Alustame mängu
+		JoonistaFreim.enableAllButtons();
 		Mangi(vihje, katseid, arvatudTahed, sona, kirjeldus);
 	}
 
@@ -173,8 +175,8 @@ public class KosmoseOdysseia extends Nupukuular {
 						String error = "Vale! Sa oled juba seda tähte pakkunud!";
 						getTextArea().replaceRange(
 								"                                      ",
-								142 + v1.length + kirjeldus.length(),
-								142 + v1.length + kirjeldus.length()
+								a + v1.length + kirjeldus.length(),
+								a + v1.length + kirjeldus.length()
 										+ error.length());
 						try {
 							Thread.sleep(300);
@@ -184,15 +186,15 @@ public class KosmoseOdysseia extends Nupukuular {
 						}
 						getTextArea().replaceRange(
 								error,
-								142 + v1.length + kirjeldus.length(),
-								142 + v1.length + kirjeldus.length()
+								a + v1.length + kirjeldus.length(),
+								a + v1.length + kirjeldus.length()
 										+ error.length());
 					} else {
 						String error = "Õige!                                   ";
 						getTextArea().replaceRange(
 								"                                      ",
-								142 + v1.length + kirjeldus.length(),
-								142 + v1.length + kirjeldus.length()
+								a + v1.length + kirjeldus.length(),
+								a + v1.length + kirjeldus.length()
 										+ error.length());
 						try {
 							Thread.sleep(300);
@@ -202,8 +204,8 @@ public class KosmoseOdysseia extends Nupukuular {
 						}
 						getTextArea().replaceRange(
 								error,
-								142 + v1.length + kirjeldus.length(),
-								142 + v1.length + kirjeldus.length()
+								a + v1.length + kirjeldus.length(),
+								a + v1.length + kirjeldus.length()
 										+ error.length());
 
 						int sp = sona.length();
@@ -219,22 +221,24 @@ public class KosmoseOdysseia extends Nupukuular {
 					katseid += 1;
 					kuvaKatseid(lubatudKatseteArv - katseid, v1, kirjeldus);
 					String error = "Vale! Sellist tähte ei ole sõnas!     ";
-					getTextArea().replaceRange(
-							"                                      ",
-							142 + v1.length + kirjeldus.length(),
-							142 + v1.length + kirjeldus.length()
-									+ error.length());
+					getTextArea()
+							.replaceRange(
+									"                                      ",
+									a + v1.length + kirjeldus.length(),
+									a + v1.length + kirjeldus.length()
+											+ error.length());
 					try {
 						Thread.sleep(300);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					getTextArea().replaceRange(
-							error,
-							142 + v1.length + kirjeldus.length(),
-							142 + v1.length + kirjeldus.length()
-									+ error.length());
+					getTextArea()
+							.replaceRange(
+									error,
+									a + v1.length + kirjeldus.length(),
+									a + v1.length + kirjeldus.length()
+											+ error.length());
 					arvatudTahed += taht;
 				}
 				System.out.println();
@@ -243,7 +247,7 @@ public class KosmoseOdysseia extends Nupukuular {
 				for (int x = 0; x < v1.length; x++) {
 					S += v1[x];
 				}
-				getTextArea().replaceRange(S, 115, 115 + S.length());
+				getTextArea().replaceRange(S, 118, 118 + S.length());
 				arvatudTahed += taht;
 				taht = "";
 				Arva(vihje, katseid, arvatudTahed, sona, v1, s2, man, kirjeldus);
@@ -291,8 +295,8 @@ public class KosmoseOdysseia extends Nupukuular {
 
 	public void kuvaKatseid(int katseteArv, char[] v1, String kirjeldus) {
 		getTextArea().replaceRange(Integer.toString(katseteArv),
-				140 + v1.length + kirjeldus.length(),
-				141 + v1.length + kirjeldus.length());
+				143 + v1.length + kirjeldus.length(),
+				144 + v1.length + kirjeldus.length());
 
 	}
 
