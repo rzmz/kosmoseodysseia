@@ -1,5 +1,6 @@
 import java.awt.*;
-
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.*;
 
 public class JoonistaFreim extends JFrame {
@@ -40,21 +41,23 @@ public class JoonistaFreim extends JFrame {
 	static JButton Y = new JButton("Y");
 	static JButton nupud[] = { A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P,
 			Q, R, S, Ss, Z, Zz, T, U, V, W, Oo, Aa, Oi, Uu, X, Y };
+	static char tahed[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','š','z','ž','t','u','v','w','õ','ä','ö','ü','x','y'};
+	private JFrame frame;
 
 	public JoonistaFreim() {
-		setScreenSize();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("KosmoseOdüsseia");
-		setResizable(false);
+		frame = new JFrame("Kosmose Odüsseia");
+		frame.setSize(new Dimension(600, 500));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
 
-		Container container = getContentPane();
+		Container container = frame.getContentPane();
 		container.setLayout(new BorderLayout());
 
 		JPanel paneel1 = new JPanel();
 		container.add(paneel1, BorderLayout.NORTH);
 
-		JTextArea textArea = new JTextArea("Tekst", getHeight() / 24,
-				getWidth() / 12);
+		JTextArea textArea = new JTextArea("Tekst", frame.getHeight() / 24,
+				frame.getWidth() / 12);
 		textArea.setFont(new Font("Courier", Font.PLAIN, 12));
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
@@ -69,27 +72,24 @@ public class JoonistaFreim extends JFrame {
 
 		for (int i = 0; i < nupud.length; i++) {
 			nupud[i].addActionListener(new Nupukuular());
+			nupud[i].addKeyListener(new Klahvikuular());
 			paneel2.add(nupud[i]);
 		}
 
 		paneel3.add(paneel2);
 		container.add(paneel3, BorderLayout.CENTER);
-		setVisible(true);
+		frame.setVisible(true);
+
+		textArea.addKeyListener(new Klahvikuular());
+
 		try {
 			mang.Alusta();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		setVisible(true);
+		frame.setVisible(true);
 
-	}
-
-	private void setScreenSize() {
-		final Dimension screenSize = Toolkit.getDefaultToolkit()
-				.getScreenSize();
-		setSize(600, 500);
 	}
 
 	public static void enableAllButtons() {
