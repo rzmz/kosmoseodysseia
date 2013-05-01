@@ -1,6 +1,11 @@
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class JoonistaFreim extends JFrame {
@@ -41,7 +46,9 @@ public class JoonistaFreim extends JFrame {
 	static JButton Y = new JButton("Y");
 	static JButton nupud[] = { A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P,
 			Q, R, S, Ss, Z, Zz, T, U, V, W, Oo, Aa, Oi, Uu, X, Y };
-	static char tahed[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','š','z','ž','t','u','v','w','õ','ä','ö','ü','x','y'};
+	static char tahed[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+			'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 'š', 'z', 'ž', 't',
+			'u', 'v', 'w', 'õ', 'ä', 'ö', 'ü', 'x', 'y' };
 	private JFrame frame;
 
 	public JoonistaFreim() {
@@ -53,15 +60,20 @@ public class JoonistaFreim extends JFrame {
 		Container container = frame.getContentPane();
 		container.setLayout(new BorderLayout());
 
-		JPanel paneel1 = new JPanel();
-		container.add(paneel1, BorderLayout.NORTH);
+		Paint obj = new Paint();
+		obj.setPreferredSize(new Dimension(343, 270));
+		container.add(obj, BorderLayout.NORTH);
 
-		JTextArea textArea = new JTextArea("Tekst", frame.getHeight() / 24,
-				frame.getWidth() / 12);
+		JPanel paneel1 = new JPanel();
+		container.add(paneel1, BorderLayout.CENTER);
+
+		JTextArea textArea = new JTextArea("Tekst", 60, 50);
+
 		textArea.setFont(new Font("Courier", Font.PLAIN, 12));
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
+
 		paneel1.add(new JScrollPane(textArea));
 		textArea.selectAll();
 		textArea.replaceSelection("kala");
@@ -77,7 +89,8 @@ public class JoonistaFreim extends JFrame {
 		}
 
 		paneel3.add(paneel2);
-		container.add(paneel3, BorderLayout.CENTER);
+		container.add(paneel3, BorderLayout.SOUTH);
+
 		frame.setVisible(true);
 
 		textArea.addKeyListener(new Klahvikuular());

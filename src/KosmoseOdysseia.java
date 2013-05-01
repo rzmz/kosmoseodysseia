@@ -7,7 +7,7 @@ public class KosmoseOdysseia extends Nupukuular {
 
 	private int lubatudKatseteArv = 6;
 	private JTextArea _textArea;
-	int a = 151;
+	int a = 33;
 
 	public KosmoseOdysseia(JTextArea textArea) {
 		setTextArea(textArea);
@@ -112,21 +112,21 @@ public class KosmoseOdysseia extends Nupukuular {
 			Kaotus(sona);
 		} else {
 			// tekitame raketi massiivi
-			String man[] = new String[7];
-			man[0] = "        _\n       /_\\\n      | _ |\n    /\\||_||/\\\n    | |   | |\n    | |   | |\n    | |   | |\n |_|___|_|\n / \\         / \\\n\n";
-			man[1] = "        _\n       /_\\\n      | _ |\n    /\\||_||/\\\n    | |   | |\n    | |   | |\n    | |   | |\n |_|___|_|\n\n";
-			man[2] = "        _\n       /_\\\n      | _ |\n       ||_||/\\\n      |   | |\n      |   | |\n      |   | |\n   |___|_|\n\n";
-			man[3] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n      |   | \n       |   | \n    |___|  \n\n";
-			man[4] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n      |   | \n       |   | \n           \n\n";
-			man[5] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n      |   | \n             \n           \n\n";
-			man[6] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n            \n             \n           \n\n";
+//			String man[] = new String[7];
+//			man[0] = "        _\n       /_\\\n      | _ |\n    /\\||_||/\\\n    | |   | |\n    | |   | |\n    | |   | |\n |_|___|_|\n / \\         / \\\n\n";
+//			man[1] = "        _\n       /_\\\n      | _ |\n    /\\||_||/\\\n    | |   | |\n    | |   | |\n    | |   | |\n |_|___|_|\n\n";
+//			man[2] = "        _\n       /_\\\n      | _ |\n       ||_||/\\\n      |   | |\n      |   | |\n      |   | |\n   |___|_|\n\n";
+//			man[3] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n      |   | \n       |   | \n    |___|  \n\n";
+//			man[4] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n      |   | \n       |   | \n           \n\n";
+//			man[5] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n      |   | \n             \n           \n\n";
+//			man[6] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n            \n             \n           \n\n";
 			char v1[] = vihje.toCharArray();
 			char s2[] = sona.toCharArray();
 
 			// teeme tekstikasti tühjaks
 			clearTextArea();
 
-			getTextArea().append(man[0]);
+//			getTextArea().append(man[0]);
 
 			String kokku = "";
 
@@ -140,12 +140,12 @@ public class KosmoseOdysseia extends Nupukuular {
 			for (int i = 0; i < 60; i++) {
 				getTextArea().append(" ");
 			}
-			Arva(vihje, katseid, arvatudTahed, sona, v1, s2, man, kirjeldus);
+			Arva(vihje, katseid, arvatudTahed, sona, v1, s2, kirjeldus);
 		}
 	}
 
 	public void Arva(String vihje, int katseid, String arvatudTahed,
-			String sona, char v1[], char s2[], String man[], String kirjeldus) {
+			String sona, char v1[], char s2[], String kirjeldus) {
 		String tg1 = new String(v1);
 		String tg2 = new String(s2);
 
@@ -190,7 +190,8 @@ public class KosmoseOdysseia extends Nupukuular {
 				} else {
 					katseid += 1;
 					kuvaKatseid(lubatudKatseteArv - katseid, v1, kirjeldus);
-					String error = "Vale! Tähte "+taht+" ei ole sõnas!     ";
+					String error = "Vale! Tähte " + taht
+							+ " ei ole sõnas!     ";
 					getTextArea()
 							.replaceRange(
 									"                                      ",
@@ -211,10 +212,10 @@ public class KosmoseOdysseia extends Nupukuular {
 				for (int x = 0; x < v1.length; x++) {
 					S += v1[x];
 				}
-				getTextArea().replaceRange(S, 124, 124 + S.length());
+				getTextArea().replaceRange(S, 6, 6 + S.length());
 				arvatudTahed += taht;
 				taht = "";
-				Arva(vihje, katseid, arvatudTahed, sona, v1, s2, man, kirjeldus);
+				Arva(vihje, katseid, arvatudTahed, sona, v1, s2, kirjeldus);
 			}
 		}
 	}
@@ -255,8 +256,8 @@ public class KosmoseOdysseia extends Nupukuular {
 
 	public void kuvaKatseid(int katseteArv, char[] v1, String kirjeldus) {
 		getTextArea().replaceRange(Integer.toString(katseteArv),
-				149 + v1.length + kirjeldus.length(),
-				150 + v1.length + kirjeldus.length());
+				31 + v1.length + kirjeldus.length(),
+				32 + v1.length + kirjeldus.length());
 
 	}
 

@@ -8,7 +8,7 @@ public class Peaklass {
 				.showMessageDialog(
 						null,
 						"Tere tulemast, kartmatu piloot!\nMängu eesmärgiks on tunda kosmoseteemalist teooriat ning saata rakett kuule.");
-        new Thread(Sound.play).start();	
+		new Thread(Sound.play).start();
 		new JoonistaFreim();
 	}
 }
