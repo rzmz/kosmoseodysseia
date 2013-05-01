@@ -8,6 +8,7 @@ public class KosmoseOdysseia extends Nupukuular {
 	private int lubatudKatseteArv = 6;
 	private JTextArea _textArea;
 	int a = 33;
+	boolean Beginning=true;
 
 	public KosmoseOdysseia(JTextArea textArea) {
 		setTextArea(textArea);
@@ -140,6 +141,16 @@ public class KosmoseOdysseia extends Nupukuular {
 			for (int i = 0; i < 60; i++) {
 				getTextArea().append(" ");
 			}
+			
+			if(Beginning){
+				new Thread(Sound.play).start();
+				JOptionPane
+				.showMessageDialog(
+						null,
+						"Tere tulemast, kartmatu piloot!\nMängu eesmärgiks on tunda\nkosmoseteemalist teooriat ning\nsaata rakett kuule.");
+		Beginning=false;
+			}
+			
 			Arva(vihje, katseid, arvatudTahed, sona, v1, s2, kirjeldus);
 		}
 	}

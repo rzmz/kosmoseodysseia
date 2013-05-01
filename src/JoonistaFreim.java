@@ -67,7 +67,7 @@ public class JoonistaFreim extends JFrame {
 		JPanel paneel1 = new JPanel();
 		container.add(paneel1, BorderLayout.CENTER);
 
-		JTextArea textArea = new JTextArea("Tekst", 60, 50);
+		JTextArea textArea = new JTextArea("Tekst", 15, 50);
 
 		textArea.setFont(new Font("Courier", Font.PLAIN, 12));
 		textArea.setEditable(false);
