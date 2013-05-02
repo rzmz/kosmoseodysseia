@@ -8,7 +8,8 @@ public class KosmoseOdysseia extends Nupukuular {
 	private int lubatudKatseteArv = 6;
 	private JTextArea _textArea;
 	int a = 33;
-	boolean Beginning=true;
+	boolean Beginning = true;
+	static String sonaoriginaal;
 
 	public KosmoseOdysseia(JTextArea textArea) {
 		setTextArea(textArea);
@@ -19,7 +20,7 @@ public class KosmoseOdysseia extends Nupukuular {
 		// Sõnade listi genereerimine
 		String sonad[] = {
 				"süstik - Tiibadega kosmoseaparaat.",
-				"estcube - Kuulus tudengisatelliit.",
+				"Estcube - Kuulus tudengisatelliit.",
 				"gravitatsioonikonstant - Konstant, mis iseloomustab raskusjõu tugevust.",
 				"paokiirus - Vähim kiirus, millega saab lahkuda taevakeha külgetõmbejõu mõjupiirkonnast.",
 				"orbitaaljaam - Kosmoseaparaat, mis tiirleb pikka aega ümber Maa ja on pidevalt või ajutiselt mehitatud.",
@@ -42,7 +43,7 @@ public class KosmoseOdysseia extends Nupukuular {
 				"päikesetuul - Päikesest lähtuv laetud osakeste voog.",
 				"päikesepuri - Teoreetiline kosmosesõiduki käitursüsteem, mis kasutab jõuallikaks päikesetuule dünaamilist rõhku.",
 				"kuumoodul - Kosmoseaparaat, mille otstarve oli missiooni käigus kahe astronaudi Kuu pinnale maandamine ja missiooni lõppedes orbiidile tagasi lennutamine.",
-				"dilämmastiktetraoksiid - Teisisõnu N2O4. Ülimürgine aine, mida kasutati Apollo kuumoodulis koos Aerozine50'ga kütteks.",
+				// "dilämmastiktetraoksiid - Teisisõnu N2O4. Ülimürgine aine, mida kasutati Apollo kuumoodulis koos Aerozine50'ga kütteks.",
 				"skafander - Suletav tehiskeskkond, mille eesmärk on kaitsta astronauti avakosmoses valitsevate tingimuste eest.",
 				"asteroid - Väike planeedisarnane taevakeha, mis tiirleb Kepleri seadustele vastavatel orbiitidel ümber Päikese.",
 				"meteoriitika - Teadusharu, mis tegeleb meteoriitide ja muude maaväliste materjalide uurimisega.",
@@ -68,21 +69,16 @@ public class KosmoseOdysseia extends Nupukuular {
 				"neutrontäht - Peamiselt neutronitest koosnev täht." };
 
 		// Juhusliku sõna valimine koos vihjega
-		String sona_koos_vihjega;
 		Random rand = new Random();
 		int sonaindeks = rand.nextInt(sonad.length);
-		sona_koos_vihjega = sonad[sonaindeks];
-
-		String[] sona_vihje;
-
-		String sona;
-		String kirjeldus;
+		String sona_koos_vihjega = sonad[sonaindeks];
 
 		// teeme tükkideks...
-		sona_vihje = sona_koos_vihjega.split("-");
+		String[] sona_vihje = sona_koos_vihjega.split("-");
 
-		sona = sona_vihje[0].trim().toLowerCase();
-		kirjeldus = sona_vihje[1].trim();
+		sonaoriginaal = sona_vihje[0].trim();
+		String sona = sona_vihje[0].trim().toLowerCase();
+		String kirjeldus = sona_vihje[1].trim();
 
 		// Tekitame tühikud
 		String vihje = "";
@@ -112,45 +108,37 @@ public class KosmoseOdysseia extends Nupukuular {
 		if (katseid == lubatudKatseteArv) {
 			Kaotus(sona);
 		} else {
-			// tekitame raketi massiivi
-//			String man[] = new String[7];
-//			man[0] = "        _\n       /_\\\n      | _ |\n    /\\||_||/\\\n    | |   | |\n    | |   | |\n    | |   | |\n |_|___|_|\n / \\         / \\\n\n";
-//			man[1] = "        _\n       /_\\\n      | _ |\n    /\\||_||/\\\n    | |   | |\n    | |   | |\n    | |   | |\n |_|___|_|\n\n";
-//			man[2] = "        _\n       /_\\\n      | _ |\n       ||_||/\\\n      |   | |\n      |   | |\n      |   | |\n   |___|_|\n\n";
-//			man[3] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n      |   | \n       |   | \n    |___|  \n\n";
-//			man[4] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n      |   | \n       |   | \n           \n\n";
-//			man[5] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n      |   | \n             \n           \n\n";
-//			man[6] = "        _\n       /_\\\n      | _ |\n       ||_||\'                \n            \n             \n           \n\n";
 			char v1[] = vihje.toCharArray();
 			char s2[] = sona.toCharArray();
 
 			// teeme tekstikasti tühjaks
 			clearTextArea();
 
-//			getTextArea().append(man[0]);
-
 			String kokku = "";
 
 			for (int x = 0; x < v1.length; x++) {
 				kokku += v1[x];
 			}
-
-			getTextArea().append("Sõna: " + kokku);
+			if (Character.isUpperCase(sonaoriginaal.charAt(0))) {
+				getTextArea().append("Nimi: " + kokku);
+			} else {
+				getTextArea().append("Sõna: " + kokku);
+			}
 			getTextArea().append("\nVihje: " + kirjeldus);
 			kuvaKatseid(lubatudKatseteArv);
 			for (int i = 0; i < 60; i++) {
 				getTextArea().append(" ");
 			}
-			
-			if(Beginning){
+
+			if (Beginning) {
 				new Thread(Sound.play).start();
 				JOptionPane
-				.showMessageDialog(
-						null,
-						"Tere tulemast, kartmatu piloot!\nMängu eesmärgiks on tunda\nkosmoseteemalist teooriat ning\nsaata rakett kuule.");
-		Beginning=false;
+						.showMessageDialog(
+								null,
+								"Tere tulemast, kartmatu piloot!\nMängu eesmärgiks on tunda\nkosmoseteemalist teooriat ning\nsaata rakett kuule.");
+				Beginning = false;
 			}
-			
+
 			Arva(vihje, katseid, arvatudTahed, sona, v1, s2, kirjeldus);
 		}
 	}
@@ -183,12 +171,16 @@ public class KosmoseOdysseia extends Nupukuular {
 								a + v1.length + kirjeldus.length()
 										+ error.length());
 
-						getTextArea().replaceRange(
-								error,
-								a + v1.length + kirjeldus.length(),
-								a + v1.length + kirjeldus.length()
-										+ error.length());
-
+						try {
+							getTextArea().replaceRange(
+									error,
+									a + v1.length + kirjeldus.length(),
+									a + v1.length + kirjeldus.length()
+											+ error.length());
+						} catch (IllegalArgumentException e) {
+							e.printStackTrace();
+							System.exit(0);
+						}
 						int sp = sona.length();
 						for (int i = 0; i < sp; i++) {
 							char aChar = taht.charAt(0);
@@ -223,10 +215,18 @@ public class KosmoseOdysseia extends Nupukuular {
 				for (int x = 0; x < v1.length; x++) {
 					S += v1[x];
 				}
+				if (Character.isUpperCase(sonaoriginaal.charAt(0))) {
+					S = S.substring(0, 1).toUpperCase() + S.substring(1);
+				}
 				getTextArea().replaceRange(S, 6, 6 + S.length());
 				arvatudTahed += taht;
 				taht = "";
-				Arva(vihje, katseid, arvatudTahed, sona, v1, s2, kirjeldus);
+				try {
+					Arva(vihje, katseid, arvatudTahed, sona, v1, s2, kirjeldus);
+				} catch (IllegalArgumentException e) {
+					System.out.println("oops");
+					e.printStackTrace();
+				}
 			}
 		}
 	}

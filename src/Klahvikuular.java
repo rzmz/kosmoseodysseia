@@ -1,10 +1,13 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
-public class Klahvikuular implements KeyListener {
-	boolean AltEnabled = false;
-	boolean CtrlEnabled = false;
+public class Klahvikuular extends JPanel implements KeyListener {
+	private static final long serialVersionUID = 1L;
+	static boolean isLeftDown = false;
+	static boolean isRightDown = false;
+	static boolean isUpDown = false;
 
 	public Klahvikuular() {
 	}
@@ -142,14 +145,38 @@ public class Klahvikuular implements KeyListener {
 			(JoonistaFreim.Y).setEnabled(false);
 			Nupukuular.taht = "y";
 			break;
-		// default:
-		// System.out.println(e.getKeyCode());
-		// System.out.println(taht);
+		default:
+//			 System.out.println(kood);
+			switch (kood) {
+			case 38:
+				isUpDown = true;
+				break;
+			case 39:
+				isRightDown = true;
+				break;
+			case 37:
+				isLeftDown = true;
+				break;
+			case 27:
+				JoonistaFreim.StartMenu();
+			}
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		int kood = e.getKeyCode();
+		switch (kood) {
+		case 38:
+			isUpDown = false;
+			break;
+		case 39:
+			isRightDown = false;
+			break;
+		case 37:
+			isLeftDown = false;
+			break;
+		}
 	}
 
 	@Override

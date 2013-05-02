@@ -1,12 +1,9 @@
 import java.awt.*;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class JoonistaFreim extends JFrame {
 
@@ -49,34 +46,51 @@ public class JoonistaFreim extends JFrame {
 	static char tahed[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
 			'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 'š', 'z', 'ž', 't',
 			'u', 'v', 'w', 'õ', 'ä', 'ö', 'ü', 'x', 'y' };
-	private JFrame frame;
+	static JFrame frame;
+	static Container container;
+	Font font = new Font("Press Start 2P", Font.PLAIN, 8);
 
-	public JoonistaFreim() {
+	public JoonistaFreim() throws FontFormatException, IOException {
+		GraphicsEnvironment ge = GraphicsEnvironment
+				.getLocalGraphicsEnvironment();
+		ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(
+				"PressStart2P.ttf")));
+//		 GraphicsEnvironment e = GraphicsEnvironment
+//		 .getLocalGraphicsEnvironment();
+//		 String[] fontnames = e.getAvailableFontFamilyNames();
+//		 System.out.println("\nFonts available on this platform: ");
+//		 for (int i = 0; i < fontnames.length; i++)
+//		 System.out.println(fontnames[i]);
+		
 		frame = new JFrame("Kosmose Odüsseia");
 		frame.setSize(new Dimension(600, 500));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
+	    frame.setLocationRelativeTo(null);  
 
-		Container container = frame.getContentPane();
-		container.setLayout(new BorderLayout());
+		container = frame.getContentPane();
+		container.setLayout(new BorderLayout());  
 
 		Paint obj = new Paint();
-		obj.setPreferredSize(new Dimension(343, 270));
+		obj.setPreferredSize(new Dimension(350, 330));
+
 		container.add(obj, BorderLayout.NORTH);
 
 		JPanel paneel1 = new JPanel();
-		container.add(paneel1, BorderLayout.CENTER);
+//		container.add(paneel1, BorderLayout.CENTER);
 
 		JTextArea textArea = new JTextArea("Tekst", 15, 50);
 
-		textArea.setFont(new Font("Courier", Font.PLAIN, 12));
+		textArea.setFont(font);
+		textArea.setForeground(Color.WHITE);
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
-
-		paneel1.add(new JScrollPane(textArea));
+	    textArea.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));   
+		paneel1.add(textArea);
 		textArea.selectAll();
 		textArea.replaceSelection("kala");
+		container.add(textArea, BorderLayout.CENTER);
 
 		KosmoseOdysseia mang = new KosmoseOdysseia(textArea);
 		JPanel paneel2 = new JPanel(new GridLayout(4, 8));
@@ -85,20 +99,30 @@ public class JoonistaFreim extends JFrame {
 		for (int i = 0; i < nupud.length; i++) {
 			nupud[i].addActionListener(new Nupukuular());
 			nupud[i].addKeyListener(new Klahvikuular());
+			nupud[i].setFont(font);
+			nupud[i].setForeground(Color.WHITE);
+			nupud[i].setBackground(Color.BLACK);
 			paneel2.add(nupud[i]);
 		}
 
 		paneel3.add(paneel2);
 		container.add(paneel3, BorderLayout.SOUTH);
-
+		
+		frame.setBackground(Color.BLACK);
+		container.setBackground(Color.BLACK);
+		paneel3.setBackground(Color.BLACK);
+		paneel2.setBackground(Color.BLACK);
+		paneel1.setBackground(Color.BLACK);
+		textArea.setBackground(Color.BLACK);
+		
 		frame.setVisible(true);
 
 		textArea.addKeyListener(new Klahvikuular());
 
 		try {
 			mang.Alusta();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		} catch (InterruptedException ex) {
+			ex.printStackTrace();
 		}
 
 		frame.setVisible(true);
@@ -109,6 +133,19 @@ public class JoonistaFreim extends JFrame {
 		for (int i = 0; i < nupud.length; i++) {
 			nupud[i].setEnabled(true);
 		}
+	}
 
+	static public void StartMenu() {
+		container.removeAll();
+		JPanel paneel = new JPanel();
+		for (int i = 0; i < nupud.length; i++) {
+			nupud[i].addActionListener(new Nupukuular());
+			nupud[i].addKeyListener(new Klahvikuular());
+			paneel.add(nupud[i]);
+		}
+		container.add(paneel);
+		container.revalidate();
+		container.repaint();
+		// Sound.run=false;
 	}
 }

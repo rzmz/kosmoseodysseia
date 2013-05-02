@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>PressStart2P.ttf</name>
+			<type>1</type>
+			<location>C:/Users/Juhan/git/kosmoseodysseia/PressStart2P.ttf</location>
+		</link>
+		<link>
+			<name>space.png</name>
+			<type>1</type>
+			<location>C:/Users/Juhan/git/kosmoseodysseia/space.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>

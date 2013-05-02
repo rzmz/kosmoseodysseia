@@ -2,33 +2,20 @@ import java.io.*;
 import javax.sound.sampled.*;
 
 public class Sound {
-	static File sound = new File("Music.wav"); // Write you own file location
-												// here and be aware that it
-												// needs to be an .wav file
-	static boolean muted = false; // This should explain itself
-	static float volume = 20.0f; // This is the volume that goes from 0 to 100
-	static float pan = 0.0f; // The balance between the speakers 0 is both sides
-								// and it goes from -1 to 1
+	static boolean muted = false;
+	static float volume = 20.0f; // 0-100
+	static float balance = 0.0f; // -1 to 1
+	static boolean run = true;
+	static double waitSeconds = 0.0d;
 
-	static double seconds = 1.0d; // The amount of seconds to wait before the
-									// sound starts playing
+	static boolean looped_forever = true;
+	static int loop_times = 0;
+	static int loops_done = 0;
 
-	static boolean looped_forever = true; // It will keep looping forever if
-											// this is true
-
-	static int loop_times = 0; // Set the amount of extra times you want the
-								// sound to loop (you don't need to have
-								// looped_forever set to true)
-	static int loops_done = 0; // When the program is running this is counting
-								// the times the sound has looped so it knows
-								// when to stop
-
-	final static Runnable play = new Runnable() // This Thread/Runnabe is for
-												// playing the sound
-	{
+	final static Runnable play = new Runnable() {
 		public void run() {
 			try {
-				// Check if the audio file is a .wav file
+				File sound = new File("Music.wav");
 				if (sound.getName().toLowerCase().contains(".wav")) {
 					AudioInputStream stream = AudioSystem
 							.getAudioInputStream(sound);
@@ -71,22 +58,20 @@ public class Sound {
 
 					FloatControl pan_control = (FloatControl) line
 							.getControl(FloatControl.Type.PAN);
-					pan_control.setValue(pan);
+					pan_control.setValue(balance);
 
 					long last_update = System.currentTimeMillis();
 					double since_last_update = (System.currentTimeMillis() - last_update) / 1000.0d;
 
 					// Wait the amount of seconds set before continuing
-					while (since_last_update < seconds) {
+					while (since_last_update < waitSeconds) {
 						since_last_update = (System.currentTimeMillis() - last_update) / 1000.0d;
 					}
-
-					// System.out.println("Playing!");
 
 					int num_read = 0;
 					byte[] buf = new byte[line.getBufferSize()];
 
-					while ((num_read = stream.read(buf, 0, buf.length)) >= 0) {
+					while ((num_read = stream.read(buf, 0, buf.length)) >= 0 && run) {
 						int offset = 0;
 
 						while (offset < num_read) {
@@ -105,8 +90,10 @@ public class Sound {
 						new Thread(play).start();
 					}
 				}
+			} catch (FileNotFoundException ex) {
+				System.out.println("Soundi faili ei leitud.");
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				System.out.println("Viga soundiga.");
 			}
 		}
 	};
