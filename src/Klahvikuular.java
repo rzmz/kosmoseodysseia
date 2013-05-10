@@ -146,7 +146,7 @@ public class Klahvikuular extends JPanel implements KeyListener {
 			(GameWindow.Y).setEnabled(false);
 			break;
 		default:
-			// System.out.println(kood);
+			System.out.println(kood);
 			switch (kood) {
 			case 38:
 				isUpDown = true;
@@ -161,6 +161,7 @@ public class Klahvikuular extends JPanel implements KeyListener {
 				StartWindow.StartMenu();
 			}
 		}
+		KosmoseOdysseia.Arva();
 	}
 
 	@Override

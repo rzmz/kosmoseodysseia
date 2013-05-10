@@ -12,7 +12,6 @@ public class Nupukuular implements ActionListener {
 		switch (nupp) {
 		case "Start":
 			try {
-				System.out.println("enne new GameWindow()");
 				new GameWindow();
 			} catch (FontFormatException | IOException e1) {
 				e1.printStackTrace();
@@ -22,6 +21,7 @@ public class Nupukuular implements ActionListener {
 			JButton bt = (JButton) e.getSource();
 			bt.setEnabled(false);
 			Nupukuular.taht = (e.getActionCommand()).toLowerCase();
+			KosmoseOdysseia.Arva();
 		}
 	}
 }

@@ -48,38 +48,13 @@ public class GameWindow extends JFrame {
 			'u', 'v', 'w', 'õ', 'ä', 'ö', 'ü', 'x', 'y' };
 
 	public GameWindow() throws FontFormatException, IOException {
-		System.out.println("GameWindow() algus");
-		// GraphicsEnvironment ge = GraphicsEnvironment
-		// .getLocalGraphicsEnvironment();
-		// ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(
-		// "PressStart2P.ttf")));
-		// // GraphicsEnvironment e = GraphicsEnvironment
-		// // .getLocalGraphicsEnvironment();
-		// // String[] fontnames = e.getAvailableFontFamilyNames();
-		// // System.out.println("\nFonts available on this platform: ");
-		// // for (int i = 0; i < fontnames.length; i++)
-		// // System.out.println(fontnames[i]);
-		//
-		// frame = new JFrame("Kosmose Odüsseia");
-		// frame.setSize(new Dimension(600, 500));
-		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// frame.setResizable(false);
-		// frame.setLocationRelativeTo(null);
-		//
-		// container = frame.getContentPane();
-		// container.removeAll();
-		// container.setLayout(new BorderLayout());
 		(StartWindow.container).removeAll();
-		(StartWindow.container).setLayout(new BorderLayout());
 
 		Paint obj = new Paint();
 		obj.setPreferredSize(new Dimension(350, 320));
 		(StartWindow.container).revalidate();
 		(StartWindow.container).repaint();
 		(StartWindow.container).add(obj, BorderLayout.NORTH);
-
-		JPanel paneel1 = new JPanel();
-		// container.add(paneel1, BorderLayout.CENTER);
 
 		JTextArea textArea = new JTextArea("Tekst", 15, 50);
 
@@ -89,7 +64,6 @@ public class GameWindow extends JFrame {
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
 		textArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		paneel1.add(textArea);
 		textArea.selectAll();
 		textArea.replaceSelection("kala");
 		(StartWindow.container).add(textArea, BorderLayout.CENTER);
@@ -113,23 +87,15 @@ public class GameWindow extends JFrame {
 		paneel3.add(paneel2);
 		(StartWindow.container).add(paneel3, BorderLayout.SOUTH);
 
-		(StartWindow.frame).setBackground(Color.BLACK);
-		(StartWindow.container).setBackground(Color.BLACK);
 		paneel3.setBackground(Color.BLACK);
 		paneel2.setBackground(Color.BLACK);
-		paneel1.setBackground(Color.BLACK);
 		textArea.setBackground(Color.BLACK);
 		obj.setBackground(Color.BLACK);
-		(StartWindow.frame).setVisible(true);
+		
+		(StartWindow.container).requestFocusInWindow();
+		(StartWindow.container).addKeyListener(new Klahvikuular());
 
-		textArea.addKeyListener(new Klahvikuular());
-		repaint();
-		revalidate();
-		(StartWindow.container).revalidate();
-		(StartWindow.container).repaint();
-		(StartWindow.frame).setVisible(true);
 		try {
-			System.out.println("GameWindow() lõpp");
 			mang.Alusta();
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();

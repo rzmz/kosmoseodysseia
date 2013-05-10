@@ -90,6 +90,7 @@ public class StartWindow extends JFrame {
 			MenuButtons[i].setBackground(Color.BLACK);
 			MenuPanel.add(MenuButtons[i]);
 		}
+		
 		BackgroundPanel.add(MenuPanel, BorderLayout.CENTER);
 		container.add(BackgroundPanel);
 		container.repaint();

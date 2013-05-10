@@ -7,20 +7,26 @@ import javax.swing.JTextArea;
 
 public class KosmoseOdysseia extends Nupukuular {
 
-	private int lubatudKatseteArv = 6;
-	private JTextArea _textArea;
-	int a = 33;
-	boolean Beginning = true;
+	private static int lubatudKatseteArv = 6;
+	private static JTextArea _textArea;
+	static int a = 33;
+	static boolean Beginning = true;
 	static String sonaoriginaal;
-	List<Integer> ArvatudSonadeIndeksid = new ArrayList<Integer>();
-	int sonaindeks;
+	static List<Integer> ArvatudSonadeIndeksid = new ArrayList<Integer>();
+	static int sonaindeks;
+	static String vihje;
+	static int katseid;
+	static String arvatudTahed;
+	static String sona;
+	static char v1[];
+	static char s2[];
+	static String kirjeldus;
 
 	public KosmoseOdysseia(JTextArea textArea) {
 		setTextArea(textArea);
 	}
 
-	public void Alusta() throws InterruptedException {
-		System.out.println("Alusta() algus");
+	public static void Alusta() throws InterruptedException {
 		// Sõnade listi genereerimine
 		String sonad[] = {
 				"süstik - Tiibadega kosmoseaparaat.",
@@ -84,41 +90,40 @@ public class KosmoseOdysseia extends Nupukuular {
 		String[] sona_vihje = sona_koos_vihjega.split("-");
 
 		sonaoriginaal = sona_vihje[0].trim();
-		String sona = sona_vihje[0].trim().toLowerCase();
-		String kirjeldus = sona_vihje[1].trim();
+		sona = sona_vihje[0].trim().toLowerCase();
+		kirjeldus = sona_vihje[1].trim();
 
 		// Tekitame tühikud
-		String vihje = "";
+		vihje = "";
 		int kriipse = sona.length() + 1;
 		for (int i = 1; i < kriipse; i++) {
 			vihje += "-";
 		}
 
-		String arvatudTahed = "";
-		int katseid = 0;
+		arvatudTahed = "";
+		katseid = 0;
 
 		// Alustame mängu
 		GameWindow.enableAllButtons();
-		Mangi(vihje, katseid, arvatudTahed, sona, kirjeldus);
+		Mangi();
 	}
 
-	private void clearTextArea() {
+	private static void clearTextArea() {
 		getTextArea().selectAll();
 		getTextArea().replaceSelection("");
 	}
 
 	// meetod, mis juhib mängu käiku
 
-	public void Mangi(String vihje, int katseid, String arvatudTahed,
-			String sona, String kirjeldus) {
+	public static void Mangi() {
 
 		if (katseid == lubatudKatseteArv) {
 			Kaotus(sona);
 		} else {
-			char v1[] = vihje.toCharArray();
-			char s2[] = sona.toCharArray();
+			v1 = vihje.toCharArray();
+			s2 = sona.toCharArray();
 
-			// teeme tekstikasti tühjaks
+			// // teeme tekstikasti tühjaks
 			clearTextArea();
 
 			String kokku = "";
@@ -142,102 +147,81 @@ public class KosmoseOdysseia extends Nupukuular {
 				// JOptionPane
 				// .showMessageDialog(
 				// null,
+				//
 				// "Tere tulemast, kartmatu piloot!\nMängu eesmärgiks on tunda\nkosmoseteemalist teooriat ning\nsaata rakett kuule.");
 				Beginning = false;
 			}
-
-			Arva(vihje, katseid, arvatudTahed, sona, v1, s2, kirjeldus);
+			// Arva();
 		}
 	}
 
-	public void Arva(String vihje, int katseid, String arvatudTahed,
-			String sona, char v1[], char s2[], String kirjeldus) {
-		String tg1 = new String(v1);
-		String tg2 = new String(s2);
-
-		if (tg1.equals(tg2)) {
-			GuessedRight();
-		} else {
-			if (katseid == lubatudKatseteArv) {
-				Kaotus(sona);
+	public static void Arva() {
+		if (sona.contains(taht)) {
+			if (arvatudTahed.contains(taht)) {
 			} else {
-				while (taht == "") {
-					try {
-						Thread.sleep(1);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				if (sona.contains(taht)) {
-					if (arvatudTahed.contains(taht)) {
-					} else {
-						String error = "Õige!                                   ";
-						getTextArea().replaceRange(
-								"                                      ",
-								a + v1.length + kirjeldus.length(),
-								a + v1.length + kirjeldus.length()
-										+ error.length());
+				String error = "Õige!                                   ";
+				getTextArea().replaceRange(
+						"                                      ",
+						a + v1.length + kirjeldus.length(),
+						a + v1.length + kirjeldus.length() + error.length());
 
-						try {
-							getTextArea().replaceRange(
-									error,
-									a + v1.length + kirjeldus.length(),
-									a + v1.length + kirjeldus.length()
-											+ error.length());
-						} catch (IllegalArgumentException e) {
-							e.printStackTrace();
-							System.exit(0);
-						}
-						int sp = sona.length();
-						for (int i = 0; i < sp; i++) {
-							char aChar = taht.charAt(0);
-							char bChar = s2[i];
-							if (bChar == aChar) {
-								v1[i] = aChar;
-							}
-						}
-					}
-				} else {
-					katseid += 1;
-					kuvaKatseid(lubatudKatseteArv - katseid, v1, kirjeldus);
-					String error = "Vale! Tähte " + taht.toUpperCase()
-							+ " ei ole sõnas!     ";
-					getTextArea()
-							.replaceRange(
-									"                                      ",
-									a + v1.length + kirjeldus.length(),
-									a + v1.length + kirjeldus.length()
-											+ error.length());
-
-					getTextArea()
-							.replaceRange(
-									error,
-									a + v1.length + kirjeldus.length(),
-									a + v1.length + kirjeldus.length()
-											+ error.length());
-					arvatudTahed += taht;
-				}
-				String S = "";
-				for (int x = 0; x < v1.length; x++) {
-					S += v1[x];
-				}
-				if (Character.isUpperCase(sonaoriginaal.charAt(0))) {
-					S = S.substring(0, 1).toUpperCase() + S.substring(1);
-				}
-				getTextArea().replaceRange(S, 6, 6 + S.length());
-				arvatudTahed += taht;
-				taht = "";
 				try {
-					Arva(vihje, katseid, arvatudTahed, sona, v1, s2, kirjeldus);
+					getTextArea()
+							.replaceRange(
+									error,
+									a + v1.length + kirjeldus.length(),
+									a + v1.length + kirjeldus.length()
+											+ error.length());
 				} catch (IllegalArgumentException e) {
-					System.out.println("oops");
 					e.printStackTrace();
+					System.exit(0);
+				}
+				int sp = sona.length();
+				for (int i = 0; i < sp; i++) {
+					char aChar = taht.charAt(0);
+					char bChar = s2[i];
+					if (bChar == aChar) {
+						v1[i] = aChar;
+					}
 				}
 			}
+		} else {
+			if (arvatudTahed.contains(taht) == false) {
+				katseid += 1;
+				kuvaKatseid(lubatudKatseteArv - katseid, v1, kirjeldus);
+				String error = "Vale! Tähte " + taht.toUpperCase()
+						+ " ei ole sõnas!     ";
+				getTextArea().replaceRange(
+						"                                      ",
+						a + v1.length + kirjeldus.length(),
+						a + v1.length + kirjeldus.length() + error.length());
+
+				getTextArea().replaceRange(error,
+						a + v1.length + kirjeldus.length(),
+						a + v1.length + kirjeldus.length() + error.length());
+				arvatudTahed += taht;
+			}
+		}
+		String S = "";
+		for (int x = 0; x < v1.length; x++) {
+			S += v1[x];
+		}
+		if (Character.isUpperCase(sonaoriginaal.charAt(0))) {
+			S = S.substring(0, 1).toUpperCase() + S.substring(1);
+		}
+		getTextArea().replaceRange(S, 6, 6 + S.length());
+		arvatudTahed += taht;
+
+		String tg1 = new String(v1);
+		String tg2 = new String(s2);
+		if (tg1.equals(tg2)) {
+			GuessedRight();
+		} else if (katseid == lubatudKatseteArv) {
+			Kaotus(sona);
 		}
 	}
 
-	public void Kaotus(String sona) {
+	public static void Kaotus(String sona) {
 		int reply = JOptionPane.showConfirmDialog(null,
 				"Sa kaotasid..\nSõna oli '" + sona + "'.\nKas mängime uuesti?",
 				"Boohoo :(", JOptionPane.YES_NO_OPTION);
@@ -269,18 +253,18 @@ public class KosmoseOdysseia extends Nupukuular {
 		}
 	}
 
-	public void kuvaKatseid(int katseteArv) {
+	public static void kuvaKatseid(int katseteArv) {
 		getTextArea().append("\nKatseid jäänud: " + katseteArv + "\n");
 	}
 
-	public void kuvaKatseid(int katseteArv, char[] v1, String kirjeldus) {
+	public static void kuvaKatseid(int katseteArv, char[] v1, String kirjeldus) {
 		getTextArea().replaceRange(Integer.toString(katseteArv),
 				31 + v1.length + kirjeldus.length(),
 				32 + v1.length + kirjeldus.length());
 
 	}
 
-	public JTextArea getTextArea() {
+	public static JTextArea getTextArea() {
 		return _textArea;
 	}
 
@@ -288,7 +272,7 @@ public class KosmoseOdysseia extends Nupukuular {
 		this._textArea = _tekst;
 	}
 
-	public void GuessedRight() {
+	public static void GuessedRight() {
 		Paint.skoor += 1;
 		ArvatudSonadeIndeksid.add(sonaindeks);
 		try {
