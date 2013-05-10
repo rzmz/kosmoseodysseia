@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -10,13 +12,15 @@ public class KosmoseOdysseia extends Nupukuular {
 	int a = 33;
 	boolean Beginning = true;
 	static String sonaoriginaal;
+	List<Integer> ArvatudSonadeIndeksid = new ArrayList<Integer>();
+	int sonaindeks;
 
 	public KosmoseOdysseia(JTextArea textArea) {
 		setTextArea(textArea);
 	}
 
 	public void Alusta() throws InterruptedException {
-
+		System.out.println("Alusta() algus");
 		// Sõnade listi genereerimine
 		String sonad[] = {
 				"süstik - Tiibadega kosmoseaparaat.",
@@ -70,7 +74,10 @@ public class KosmoseOdysseia extends Nupukuular {
 
 		// Juhusliku sõna valimine koos vihjega
 		Random rand = new Random();
-		int sonaindeks = rand.nextInt(sonad.length);
+		sonaindeks = rand.nextInt(sonad.length);
+		while (ArvatudSonadeIndeksid.contains(sonaindeks)) {
+			sonaindeks = rand.nextInt(sonad.length);
+		}
 		String sona_koos_vihjega = sonad[sonaindeks];
 
 		// teeme tükkideks...
@@ -91,7 +98,7 @@ public class KosmoseOdysseia extends Nupukuular {
 		int katseid = 0;
 
 		// Alustame mängu
-		JoonistaFreim.enableAllButtons();
+		GameWindow.enableAllButtons();
 		Mangi(vihje, katseid, arvatudTahed, sona, kirjeldus);
 	}
 
@@ -132,10 +139,10 @@ public class KosmoseOdysseia extends Nupukuular {
 
 			if (Beginning) {
 				new Thread(Sound.play).start();
-				JOptionPane
-						.showMessageDialog(
-								null,
-								"Tere tulemast, kartmatu piloot!\nMängu eesmärgiks on tunda\nkosmoseteemalist teooriat ning\nsaata rakett kuule.");
+				// JOptionPane
+				// .showMessageDialog(
+				// null,
+				// "Tere tulemast, kartmatu piloot!\nMängu eesmärgiks on tunda\nkosmoseteemalist teooriat ning\nsaata rakett kuule.");
 				Beginning = false;
 			}
 
@@ -149,14 +156,14 @@ public class KosmoseOdysseia extends Nupukuular {
 		String tg2 = new String(s2);
 
 		if (tg1.equals(tg2)) {
-			Voit();
+			GuessedRight();
 		} else {
 			if (katseid == lubatudKatseteArv) {
 				Kaotus(sona);
 			} else {
 				while (taht == "") {
 					try {
-						Thread.sleep(10);
+						Thread.sleep(1);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -193,7 +200,7 @@ public class KosmoseOdysseia extends Nupukuular {
 				} else {
 					katseid += 1;
 					kuvaKatseid(lubatudKatseteArv - katseid, v1, kirjeldus);
-					String error = "Vale! Tähte " + taht
+					String error = "Vale! Tähte " + taht.toUpperCase()
 							+ " ei ole sõnas!     ";
 					getTextArea()
 							.replaceRange(
@@ -210,7 +217,6 @@ public class KosmoseOdysseia extends Nupukuular {
 											+ error.length());
 					arvatudTahed += taht;
 				}
-				System.out.println();
 				String S = "";
 				for (int x = 0; x < v1.length; x++) {
 					S += v1[x];
@@ -237,6 +243,8 @@ public class KosmoseOdysseia extends Nupukuular {
 				"Boohoo :(", JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION) {
 			try {
+				ArvatudSonadeIndeksid.clear();
+				Paint.skoor = 0;
 				Alusta();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -278,6 +286,17 @@ public class KosmoseOdysseia extends Nupukuular {
 
 	public void setTextArea(JTextArea _tekst) {
 		this._textArea = _tekst;
+	}
+
+	public void GuessedRight() {
+		Paint.skoor += 1;
+		ArvatudSonadeIndeksid.add(sonaindeks);
+		try {
+			Alusta();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

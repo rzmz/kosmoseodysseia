@@ -6,6 +6,6 @@ import javax.swing.JOptionPane;
 
 public class Peaklass {
 	public static void main(String[] args) throws FontFormatException, IOException {
-		new JoonistaFreim();
+		new StartWindow();
 	}
 }

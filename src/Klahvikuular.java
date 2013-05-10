@@ -18,135 +18,135 @@ public class Klahvikuular extends JPanel implements KeyListener {
 		char taht = e.getKeyChar();
 		switch (taht) {
 		case 'a':
-			(JoonistaFreim.A).setEnabled(false);
 			Nupukuular.taht = "a";
+			(GameWindow.A).setEnabled(false);
 			break;
 		case 'b':
-			(JoonistaFreim.B).setEnabled(false);
 			Nupukuular.taht = "b";
+			(GameWindow.B).setEnabled(false);
 			break;
 		case 'c':
-			(JoonistaFreim.C).setEnabled(false);
 			Nupukuular.taht = "c";
+			(GameWindow.C).setEnabled(false);
 			break;
 		case 'd':
-			(JoonistaFreim.D).setEnabled(false);
 			Nupukuular.taht = "d";
+			(GameWindow.D).setEnabled(false);
 			break;
 		case 'e':
-			(JoonistaFreim.E).setEnabled(false);
 			Nupukuular.taht = "e";
+			(GameWindow.E).setEnabled(false);
 			break;
 		case 'f':
-			(JoonistaFreim.F).setEnabled(false);
 			Nupukuular.taht = "f";
+			(GameWindow.F).setEnabled(false);
 			break;
 		case 'g':
-			(JoonistaFreim.G).setEnabled(false);
 			Nupukuular.taht = "g";
+			(GameWindow.G).setEnabled(false);
 			break;
 		case 'h':
-			(JoonistaFreim.H).setEnabled(false);
 			Nupukuular.taht = "h";
+			(GameWindow.H).setEnabled(false);
 			break;
 		case 'i':
-			(JoonistaFreim.I).setEnabled(false);
 			Nupukuular.taht = "i";
+			(GameWindow.I).setEnabled(false);
 			break;
 		case 'j':
-			(JoonistaFreim.J).setEnabled(false);
 			Nupukuular.taht = "j";
+			(GameWindow.J).setEnabled(false);
 			break;
 		case 'k':
-			(JoonistaFreim.K).setEnabled(false);
 			Nupukuular.taht = "k";
+			(GameWindow.K).setEnabled(false);
 			break;
 		case 'l':
-			(JoonistaFreim.L).setEnabled(false);
 			Nupukuular.taht = "l";
+			(GameWindow.L).setEnabled(false);
 			break;
 		case 'm':
-			(JoonistaFreim.M).setEnabled(false);
 			Nupukuular.taht = "m";
+			(GameWindow.M).setEnabled(false);
 			break;
 		case 'n':
-			(JoonistaFreim.N).setEnabled(false);
 			Nupukuular.taht = "n";
+			(GameWindow.N).setEnabled(false);
 			break;
 		case 'o':
-			(JoonistaFreim.O).setEnabled(false);
 			Nupukuular.taht = "o";
+			(GameWindow.O).setEnabled(false);
 			break;
 		case 'p':
-			(JoonistaFreim.P).setEnabled(false);
 			Nupukuular.taht = "p";
+			(GameWindow.P).setEnabled(false);
 			break;
 		case 'q':
-			(JoonistaFreim.Q).setEnabled(false);
 			Nupukuular.taht = "q";
+			(GameWindow.Q).setEnabled(false);
 			break;
 		case 'r':
-			(JoonistaFreim.R).setEnabled(false);
 			Nupukuular.taht = "r";
+			(GameWindow.R).setEnabled(false);
 			break;
 		case 's':
-			(JoonistaFreim.S).setEnabled(false);
 			Nupukuular.taht = "s";
+			(GameWindow.S).setEnabled(false);
 			break;
 		case 'š':
-			(JoonistaFreim.Ss).setEnabled(false);
 			Nupukuular.taht = "š";
+			(GameWindow.Ss).setEnabled(false);
 			break;
 		case 'z':
-			(JoonistaFreim.Z).setEnabled(false);
 			Nupukuular.taht = "z";
+			(GameWindow.Z).setEnabled(false);
 			break;
 		case 'ž':
-			(JoonistaFreim.Zz).setEnabled(false);
 			Nupukuular.taht = "ž";
+			(GameWindow.Zz).setEnabled(false);
 			break;
 		case 't':
-			(JoonistaFreim.T).setEnabled(false);
 			Nupukuular.taht = "t";
+			(GameWindow.T).setEnabled(false);
 			break;
 		case 'u':
-			(JoonistaFreim.U).setEnabled(false);
 			Nupukuular.taht = "u";
+			(GameWindow.U).setEnabled(false);
 			break;
 		case 'v':
-			(JoonistaFreim.V).setEnabled(false);
 			Nupukuular.taht = "v";
+			(GameWindow.V).setEnabled(false);
 			break;
 		case 'w':
-			(JoonistaFreim.W).setEnabled(false);
 			Nupukuular.taht = "w";
+			(GameWindow.W).setEnabled(false);
 			break;
 		case 'õ':
-			(JoonistaFreim.Oo).setEnabled(false);
 			Nupukuular.taht = "õ";
+			(GameWindow.Oo).setEnabled(false);
 			break;
 		case 'ä':
-			(JoonistaFreim.Aa).setEnabled(false);
 			Nupukuular.taht = "ä";
+			(GameWindow.Aa).setEnabled(false);
 			break;
 		case 'ö':
-			(JoonistaFreim.Oi).setEnabled(false);
 			Nupukuular.taht = "ö";
+			(GameWindow.Oi).setEnabled(false);
 			break;
 		case 'ü':
-			(JoonistaFreim.Uu).setEnabled(false);
 			Nupukuular.taht = "ü";
+			(GameWindow.Uu).setEnabled(false);
 			break;
 		case 'x':
-			(JoonistaFreim.X).setEnabled(false);
 			Nupukuular.taht = "x";
+			(GameWindow.X).setEnabled(false);
 			break;
 		case 'y':
-			(JoonistaFreim.Y).setEnabled(false);
 			Nupukuular.taht = "y";
+			(GameWindow.Y).setEnabled(false);
 			break;
 		default:
-//			 System.out.println(kood);
+			// System.out.println(kood);
 			switch (kood) {
 			case 38:
 				isUpDown = true;
@@ -158,7 +158,7 @@ public class Klahvikuular extends JPanel implements KeyListener {
 				isLeftDown = true;
 				break;
 			case 27:
-				JoonistaFreim.StartMenu();
+				StartWindow.StartMenu();
 			}
 		}
 	}

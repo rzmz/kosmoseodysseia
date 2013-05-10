@@ -14,14 +14,14 @@ public class Paint extends JPanel {
 	private BufferedImage rocket;
 	int x = -1200;
 	int y = -800;
-	int deltaX0 = 2;
+	int deltaX0 = 3;
 	int deltaX = deltaX0;
-	int deltaY0 = 2;
+	int deltaY0 = 3;
 	int deltaY = deltaY0;
 	int y1 = -1090;
 	AffineTransformOp op;
 	int p = 0;
-
+	static int skoor=0;
 	public void ImagePanel() {
 		try {
 			nightsky = ImageIO.read(new File("space.png"));
@@ -58,16 +58,18 @@ public class Paint extends JPanel {
 		y = y + deltaY;
 		g.drawImage(nightsky, x, y, null);
 		// g.drawImage(rocket, 250, 25, null);
-		g.drawImage(op.filter(rocket, null), 240, 100, null);
+		g.drawImage(op.filter(rocket, null), 250, 110, null);
 		if (Klahvikuular.isLeftDown)
-			p--;
+			p = p - 5;
 		else if (Klahvikuular.isRightDown)
-			p++;
+			p = p + 5;
 
-//		x = x - p / 10;
-//		if (p != 0)
-//			y = y - 1 / p;
-		
+		x = x - p / 10;
+		if (p != 0)
+			y = y - 1 / p;
+		g.setColor(Color.WHITE);
+		g.setFont(StartWindow.font);
+		g.drawString("Skoor: "+Integer.toString(skoor), 10, 20);
 		repaint();
 	}
 

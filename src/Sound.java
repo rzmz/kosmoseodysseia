@@ -2,8 +2,8 @@ import java.io.*;
 import javax.sound.sampled.*;
 
 public class Sound {
-	static boolean muted = false;
-	static float volume = 20.0f; // 0-100
+	static boolean muted = true;
+	static float volume = 100.0f; // 0-100
 	static float balance = 0.0f; // -1 to 1
 	static boolean run = true;
 	static double waitSeconds = 0.0d;
