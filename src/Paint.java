@@ -10,8 +10,14 @@ import javax.swing.*;
 
 public class Paint extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private BufferedImage nightsky;
-	private BufferedImage rocket;
+	BufferedImage space;
+	BufferedImage rocket;
+	static BufferedImage mutebutton;
+	static BufferedImage SoundON;
+	static BufferedImage SoundOFF;
+	static String mutebuttonpath="SoundON.png";
+	static String SoundONpath="SoundON.png";
+	static String SoundOFFpath="SoundOFF.png";	
 	int x = -1200;
 	int y = -800;
 	int deltaX0 = 3;
@@ -21,11 +27,24 @@ public class Paint extends JPanel {
 	int y1 = -1090;
 	AffineTransformOp op;
 	int p = 0;
-	static int skoor=0;
+	static int skoor = 0;
+
+	public BufferedImage makeTranslucent(BufferedImage source, float alpha) {
+		Graphics2D g2d = source.createGraphics();
+		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC, alpha));
+		g2d.drawImage(source, 0, 0, null);
+		g2d.dispose();
+		return source;
+	}
+
 	public void ImagePanel() {
 		try {
-			nightsky = ImageIO.read(new File("space.png"));
+			space = ImageIO.read(new File("space.png"));
 			rocket = ImageIO.read(new File("rocket.png"));
+			SoundON = ImageIO.read(new File(SoundONpath));
+			SoundOFF = ImageIO.read(new File(SoundOFFpath));
+			if (mutebutton == null)
+				mutebutton = SoundON;
 			double rotationRequired = Math.toRadians(p);
 			double locationX = rocket.getWidth() / 2;
 			double locationY = rocket.getHeight() / 2;
@@ -48,7 +67,7 @@ public class Paint extends JPanel {
 		super.paintComponent(g);
 		ImagePanel();
 		if (y >= 0 && y < 270) {
-			g.drawImage(nightsky, x, y1, null);
+			g.drawImage(space, x, y1, null);
 			y1 = y1 + deltaY;
 		}
 		if (y > 269) {
@@ -56,9 +75,9 @@ public class Paint extends JPanel {
 			y1 = -1090;
 		}
 		y = y + deltaY;
-		g.drawImage(nightsky, x, y, null);
-		// g.drawImage(rocket, 250, 25, null);
+		g.drawImage(space, x, y, null);
 		g.drawImage(op.filter(rocket, null), 250, 110, null);
+		g.drawImage(mutebutton, 560, 10, null);
 		if (Klahvikuular.isLeftDown)
 			p = p - 5;
 		else if (Klahvikuular.isRightDown)
@@ -69,7 +88,7 @@ public class Paint extends JPanel {
 			y = y - 1 / p;
 		g.setColor(Color.WHITE);
 		g.setFont(StartWindow.font);
-		g.drawString("Skoor: "+Integer.toString(skoor), 10, 20);
+		g.drawString("Skoor: " + Integer.toString(skoor), 10, 20);
 		repaint();
 	}
 

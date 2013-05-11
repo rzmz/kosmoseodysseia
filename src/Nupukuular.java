@@ -17,6 +17,8 @@ public class Nupukuular implements ActionListener {
 				e1.printStackTrace();
 			}
 			break;
+		case "Exit":
+			System.exit(0);
 		default:
 			JButton bt = (JButton) e.getSource();
 			bt.setEnabled(false);

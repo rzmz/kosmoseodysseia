@@ -24,6 +24,7 @@ public class StartWindow extends JFrame {
 	static JButton Options = new JButton("Options");
 	static JButton Highscore = new JButton("Highscore");
 	static JButton Exit = new JButton("Exit");
+	static JButton Test = new JButton("Test");
 	static JButton MenuButtons[] = { Start, Options, Highscore, Exit };
 	static JFrame frame;
 	static Container container;
@@ -49,6 +50,8 @@ public class StartWindow extends JFrame {
 
 		container = frame.getContentPane();
 		container.setLayout(new BorderLayout());
+		Thread SoundPlay=new Thread(Sound.play);
+		SoundPlay.start();
 		StartMenu();
 
 	}
@@ -90,9 +93,11 @@ public class StartWindow extends JFrame {
 			MenuButtons[i].setBackground(Color.BLACK);
 			MenuPanel.add(MenuButtons[i]);
 		}
-		
+
 		BackgroundPanel.add(MenuPanel, BorderLayout.CENTER);
 		container.add(BackgroundPanel);
+		// container.add(Test);
+		// Test.setBounds(0, 0, 2, 3);
 		container.repaint();
 		frame.setVisible(true);
 	}

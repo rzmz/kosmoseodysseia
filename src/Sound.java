@@ -2,7 +2,7 @@ import java.io.*;
 import javax.sound.sampled.*;
 
 public class Sound {
-	static boolean muted = true;
+	static boolean muted = false;
 	static float volume = 100.0f; // 0-100
 	static float balance = 0.0f; // -1 to 1
 	static boolean run = true;
@@ -71,7 +71,8 @@ public class Sound {
 					int num_read = 0;
 					byte[] buf = new byte[line.getBufferSize()];
 
-					while ((num_read = stream.read(buf, 0, buf.length)) >= 0 && run) {
+					while ((num_read = stream.read(buf, 0, buf.length)) >= 0
+							&& run && muted == false) {
 						int offset = 0;
 
 						while (offset < num_read) {

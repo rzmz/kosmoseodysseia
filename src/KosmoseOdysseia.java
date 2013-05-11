@@ -10,7 +10,6 @@ public class KosmoseOdysseia extends Nupukuular {
 	private static int lubatudKatseteArv = 6;
 	private static JTextArea _textArea;
 	static int a = 33;
-	static boolean Beginning = true;
 	static String sonaoriginaal;
 	static List<Integer> ArvatudSonadeIndeksid = new ArrayList<Integer>();
 	static int sonaindeks;
@@ -141,17 +140,6 @@ public class KosmoseOdysseia extends Nupukuular {
 			for (int i = 0; i < 60; i++) {
 				getTextArea().append(" ");
 			}
-
-			if (Beginning) {
-				new Thread(Sound.play).start();
-				// JOptionPane
-				// .showMessageDialog(
-				// null,
-				//
-				// "Tere tulemast, kartmatu piloot!\nMängu eesmärgiks on tunda\nkosmoseteemalist teooriat ning\nsaata rakett kuule.");
-				Beginning = false;
-			}
-			// Arva();
 		}
 	}
 

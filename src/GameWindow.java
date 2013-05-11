@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -94,7 +96,9 @@ public class GameWindow extends JFrame {
 		
 		(StartWindow.container).requestFocusInWindow();
 		(StartWindow.container).addKeyListener(new Klahvikuular());
-
+		
+		obj.addMouseListener(new Hiirekuular());
+		
 		try {
 			mang.Alusta();
 		} catch (InterruptedException ex) {
