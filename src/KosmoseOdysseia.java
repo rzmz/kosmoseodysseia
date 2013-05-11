@@ -1,7 +1,12 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
@@ -100,47 +105,36 @@ public class KosmoseOdysseia extends Nupukuular {
 		}
 
 		arvatudTahed = "";
-		katseid = 0;
 
 		// Alustame mängu
 		GameWindow.enableAllButtons();
-		Mangi();
+
+		v1 = vihje.toCharArray();
+		s2 = sona.toCharArray();
+
+		// teeme tekstikasti tühjaks
+		clearTextArea();
+
+		String kokku = "";
+
+		for (int x = 0; x < v1.length; x++) {
+			kokku += v1[x];
+		}
+		if (Character.isUpperCase(sonaoriginaal.charAt(0))) {
+			getTextArea().append("Nimi: " + kokku);
+		} else {
+			getTextArea().append("Sõna: " + kokku);
+		}
+		getTextArea().append("\nVihje: " + kirjeldus);
+		kuvaKatseid(true);
+		for (int i = 0; i < 60; i++) {
+			getTextArea().append(" ");
+		}
 	}
 
 	private static void clearTextArea() {
 		getTextArea().selectAll();
 		getTextArea().replaceSelection("");
-	}
-
-	// meetod, mis juhib mängu käiku
-
-	public static void Mangi() {
-
-		if (katseid == lubatudKatseteArv) {
-			Kaotus(sona);
-		} else {
-			v1 = vihje.toCharArray();
-			s2 = sona.toCharArray();
-
-			// // teeme tekstikasti tühjaks
-			clearTextArea();
-
-			String kokku = "";
-
-			for (int x = 0; x < v1.length; x++) {
-				kokku += v1[x];
-			}
-			if (Character.isUpperCase(sonaoriginaal.charAt(0))) {
-				getTextArea().append("Nimi: " + kokku);
-			} else {
-				getTextArea().append("Sõna: " + kokku);
-			}
-			getTextArea().append("\nVihje: " + kirjeldus);
-			kuvaKatseid(lubatudKatseteArv);
-			for (int i = 0; i < 60; i++) {
-				getTextArea().append(" ");
-			}
-		}
 	}
 
 	public static void Arva() {
@@ -176,7 +170,7 @@ public class KosmoseOdysseia extends Nupukuular {
 		} else {
 			if (arvatudTahed.contains(taht) == false) {
 				katseid += 1;
-				kuvaKatseid(lubatudKatseteArv - katseid, v1, kirjeldus);
+				kuvaKatseid(false);
 				String error = "Vale! Tähte " + taht.toUpperCase()
 						+ " ei ole sõnas!     ";
 				getTextArea().replaceRange(
@@ -211,12 +205,31 @@ public class KosmoseOdysseia extends Nupukuular {
 
 	public static void Kaotus(String sona) {
 		int reply = JOptionPane.showConfirmDialog(null,
-				"Sa kaotasid..\nSõna oli '" + sona + "'.\nKas mängime uuesti?",
+				"Sa kaotasid..\nSõna oli '" + sona
+						+ "'.\nKas lisad oma tulemuse edetabelisse?",
 				"Boohoo :(", JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION) {
 			try {
+				String nimi = "";
+				while (nimi == "") {
+					nimi = nameInputDialog();
+				}
+				PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter("highscore.txt", true)));
+				out.println(nimi + ": " + String.valueOf(Paint.skoor));
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		int reply2 = JOptionPane.showConfirmDialog(null,
+				"Kas alustame uut mängu?", "Play again?",
+				JOptionPane.YES_NO_OPTION);
+		if (reply2 == JOptionPane.YES_OPTION) {
+			try {
 				ArvatudSonadeIndeksid.clear();
 				Paint.skoor = 0;
+				katseid = 0;
 				Alusta();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -224,6 +237,7 @@ public class KosmoseOdysseia extends Nupukuular {
 		} else {
 			System.exit(0);
 		}
+
 	}
 
 	public void Voit() {
@@ -241,14 +255,16 @@ public class KosmoseOdysseia extends Nupukuular {
 		}
 	}
 
-	public static void kuvaKatseid(int katseteArv) {
-		getTextArea().append("\nKatseid jäänud: " + katseteArv + "\n");
-	}
-
-	public static void kuvaKatseid(int katseteArv, char[] v1, String kirjeldus) {
-		getTextArea().replaceRange(Integer.toString(katseteArv),
-				31 + v1.length + kirjeldus.length(),
-				32 + v1.length + kirjeldus.length());
+	public static void kuvaKatseid(boolean isBeginning) {
+		if (isBeginning)
+			getTextArea()
+					.append("\nKatseid jäänud: "
+							+ (lubatudKatseteArv - katseid) + "\n");
+		else
+			getTextArea().replaceRange(
+					Integer.toString(lubatudKatseteArv - katseid),
+					31 + v1.length + kirjeldus.length(),
+					32 + v1.length + kirjeldus.length());
 
 	}
 
@@ -257,7 +273,7 @@ public class KosmoseOdysseia extends Nupukuular {
 	}
 
 	public void setTextArea(JTextArea _tekst) {
-		this._textArea = _tekst;
+		KosmoseOdysseia._textArea = _tekst;
 	}
 
 	public static void GuessedRight() {
@@ -269,6 +285,20 @@ public class KosmoseOdysseia extends Nupukuular {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	static String nameInputDialog() {
+		Object[] possibilities = null;
+		String s = (String) JOptionPane.showInputDialog(StartWindow.frame,
+				"Sisesta oma nimi: ", "Highscore!!", JOptionPane.PLAIN_MESSAGE,
+				null, possibilities, "");
+
+		if ((s != null) && (s.length() > 0)) {
+			return s;
+		} else {
+			return "";
+		}
+
 	}
 
 }

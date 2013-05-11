@@ -48,8 +48,35 @@ public class GameWindow extends JFrame {
 	static char tahed[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
 			'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 'š', 'z', 'ž', 't',
 			'u', 'v', 'w', 'õ', 'ä', 'ö', 'ü', 'x', 'y' };
+	static JDialog Loading;
+	JLabel LoadingText = new JLabel("MESSAGE");
 
 	public GameWindow() throws FontFormatException, IOException {
+		// Loading dialoog;
+		Loading = new JDialog(StartWindow.frame, true);
+		Loading.setUndecorated(true);
+		Loading.getContentPane().setBackground(Color.BLACK);
+		LoadingText.setForeground(Color.WHITE);
+		LoadingText.setFont(StartWindow.font);
+		Loading.setLocation(750, 380);
+		Loading.getContentPane().add(LoadingText);
+		Loading.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		Loading.setSize(100, 30);
+		Loading.setOpacity(0.75f);
+		Thread stuffToDo = new Thread() {
+			public void run() {
+				try {
+					LoadingText.setText("Loading...");
+					Thread.sleep(1000);
+					Loading.dispose();
+				} catch (Exception e) {
+
+				}
+			}
+		};
+		stuffToDo.start();
+		Loading.setVisible(true);
+
 		(StartWindow.container).removeAll();
 
 		Paint obj = new Paint();
@@ -93,14 +120,14 @@ public class GameWindow extends JFrame {
 		paneel2.setBackground(Color.BLACK);
 		textArea.setBackground(Color.BLACK);
 		obj.setBackground(Color.BLACK);
-		
+
 		(StartWindow.container).requestFocusInWindow();
 		(StartWindow.container).addKeyListener(new Klahvikuular());
-		
+
 		obj.addMouseListener(new Hiirekuular());
-		
+
 		try {
-			mang.Alusta();
+			KosmoseOdysseia.Alusta();
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();
 		}

@@ -92,9 +92,9 @@ public class Sound {
 					}
 				}
 			} catch (FileNotFoundException ex) {
-				System.out.println("Soundi faili ei leitud.");
+				System.err.println("Soundi faili ei leitud.");
 			} catch (Exception ex) {
-				System.out.println("Viga soundiga.");
+				System.err.println("Viga soundiga.");
 			}
 		}
 	};

@@ -11,7 +11,7 @@ import javax.swing.*;
 public class Paint extends JPanel {
 	private static final long serialVersionUID = 1L;
 	BufferedImage space;
-	BufferedImage rocket;
+	static BufferedImage rocket;
 	static BufferedImage mutebutton;
 	static BufferedImage SoundON;
 	static BufferedImage SoundOFF;
