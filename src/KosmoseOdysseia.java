@@ -130,7 +130,7 @@ public class KosmoseOdysseia extends Nupukuular {
 		for (int i = 0; i < 60; i++) {
 			getTextArea().append(" ");
 		}
-	}
+			}
 
 	private static void clearTextArea() {
 		getTextArea().selectAll();

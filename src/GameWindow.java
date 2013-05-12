@@ -45,9 +45,9 @@ public class GameWindow extends JFrame {
 	static JButton Y = new JButton("Y");
 	static JButton nupud[] = { A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P,
 			Q, R, S, Ss, Z, Zz, T, U, V, W, Oo, Aa, Oi, Uu, X, Y };
-	static char tahed[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-			'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 'š', 'z', 'ž', 't',
-			'u', 'v', 'w', 'õ', 'ä', 'ö', 'ü', 'x', 'y' };
+	// static char tahed[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+	// 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 'š', 'z', 'ž', 't',
+	// 'u', 'v', 'w', 'õ', 'ä', 'ö', 'ü', 'x', 'y' };
 	static JDialog Loading;
 	JLabel LoadingText = new JLabel("MESSAGE");
 
@@ -79,6 +79,7 @@ public class GameWindow extends JFrame {
 
 		(StartWindow.container).removeAll();
 
+		Paint.ImagePanel();
 		Paint obj = new Paint();
 		obj.setPreferredSize(new Dimension(350, 320));
 		(StartWindow.container).revalidate();

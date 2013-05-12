@@ -1,0 +1,3 @@
+Juhan: 3
+Juku: 1
+Juhan: 6
