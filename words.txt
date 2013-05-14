@@ -1,0 +1,48 @@
+süstik - Tiibadega kosmoseaparaat.
+Estcube - Kuulus tudengisatelliit.
+gravitatsioonikonstant - Konstant, mis iseloomustab raskusjõu tugevust.
+paokiirus - Vähim kiirus, millega saab lahkuda taevakeha külgetõmbejõu mõjupiirkonnast.
+orbitaaljaam - Kosmoseaparaat, mis tiirleb pikka aega ümber Maa ja on pidevalt või ajutiselt mehitatud.
+kuupsatelliit - Minitehiskaaslane, mille ruumala on täpselt 1 liiter.
+kosmonaut - Kosmoselaeva, lennuki liige (Venemaa).
+astronaut - Kosmoselaeva, lennuki liige (USA).
+taikonaut - Kosmoselaeva, lennuki liige (Hiina).
+astronoomia - Teadusharu, mis uurib kosmilisi objekte ja universumit tervikuna.
+meteoroloogia - Teadusharu, mis uurib atmosfääri.
+atmosfäär - Maad ümbritsev kihilise ehitusega õhukest, mis koosneb erinevatest gaasidest ning seda hoiab kinni gravitatsioonijõud.
+tehiskaaslane - Mõne planeedi või selle loodusliku kaaslase gravitatsiooniväljas mingil kindlal orbiidil tiirlev kosmoseaparaat.
+Apollo - NASA kosmoselendude programm aastatel 1961–1975, mille käigus sooritati kuus mehitatud lendu Kuule.
+Hubble - 1990. aastal käivitatud kosmoseobservatooriumi, mis tiirleb kosmoses ümber maakera, nimi.
+Curiosity - 2011. aastal käivitatud mehitamata marsikulgur.
+Juri Gagarin - Nõukogude kosmonaut, kellest 1961. aastal sai esimene kosmoses käinud inimene.
+Neil Armstrong - USA astronaut, esimene inimene, kes astus Kuu pinnale.
+aeronautika - Õhust kergemaid lennuvahendeid: õhupalle, õhulaevu, stratostaate jms. rakendav lennunduse haru.
+kosmosesond - Automaatne ja mehitamata kosmoseaparaat, mis on määratud kosmoses lendamiseks Maa orbiidi väljas ja muude taevakehade uurimiseks.
+kosmodroom - Piiritletud maa ala (koos ehitiste ja seadmetega) kosmoseaparaatide väljasaatmiseks, vastuvõtmiseks, katsetamiseks ja monteerimiseks.
+päikesetuul - Päikesest lähtuv laetud osakeste voog.
+päikesepuri - Teoreetiline kosmosesõiduki käitursüsteem, mis kasutab jõuallikaks päikesetuule dünaamilist rõhku.
+kuumoodul - Kosmoseaparaat, mille otstarve oli missiooni käigus kahe astronaudi Kuu pinnale maandamine ja missiooni lõppedes orbiidile tagasi lennutamine.
+dilämmastiktetraoksiid - Teisisõnu N2O4. Ülimürgine aine, mida kasutati Apollo kuumoodulis koos Aerozine50'ga kütteks.
+skafander - Suletav tehiskeskkond, mille eesmärk on kaitsta astronauti avakosmoses valitsevate tingimuste eest.
+asteroid - Väike planeedisarnane taevakeha, mis tiirleb Kepleri seadustele vastavatel orbiitidel ümber Päikese.
+meteoriitika - Teadusharu, mis tegeleb meteoriitide ja muude maaväliste materjalide uurimisega.
+tumeaine - Varjatud aine, mida ei ole näha, kuid mida on tunda tema raskusjõu tõttu.
+tumeenergia - Kosmoloogias ja astronoomias hüpoteetiline energiavorm, mis moodustab suurema osa Universumi koostisest.
+Universum -  Maailmakõiksus, kõikide asjade kogusus. Kosmos ehk maailmaruum, mis sisaldab kogu ainet ja energiat.
+Galaktika -  Gravitatsiooniliselt seotud tähesüsteem, mis koosneb tähtedest ja nende jäänustest, tähtedevahelisest tolmust ja tumedast ainest.
+tähesüsteem -  Tähtede kooslus, mille puhul koosluse liikmete paigutuse määrab vahetult tähtede vastastikune gravitatsioon.
+Päike - Meie Päikesesüsteemi täht.
+Maa - Ainuke teadaolev planeet Universumis, kus leidub elu.
+Linnutee - Meie galaktika nimi.
+Jupiter - Päikesesüsteemi kõige suurem planeet.
+Merkuur - Päikesele kõige lühem ning kõige väiksem Päikesesüsteemi planeet.
+Veenus - Maaga peaaegu ühesuurune ning meile lähim planeet.
+Marss - Päikesesüsteemi neljas planeet.
+Saturn - Päikesesüsteemi kuues planeet.
+Uraan - Päikesesüsteemi seitsmes planeet.
+Neptuun - Kaheksas ja viimane suurtest planeetidest meie päikesesüsteemis.
+Pluuto - Kääbusplaneet, mida kunagi loeti meie Päikesesüsteemi üheksandaks planeediks.
+Kuu - Maa looduslik kaaslane.
+heliopaus - Heliosfääri väline kiht, kus tähtedevaheline tuul ja päikesetuul on tasakaalus.
+supernoova - Oma arengu lõppjärku jõudnud täht, mille plahvatuse tagajärjel tähe heledus kasvab hetkeliselt miljoneid kordi.
+neutrontäht - Peamiselt neutronitest koosnev täht.
