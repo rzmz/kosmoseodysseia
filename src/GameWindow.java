@@ -1,11 +1,7 @@
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
 import java.io.IOException;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
 public class GameWindow extends JFrame {
 
@@ -98,7 +94,7 @@ public class GameWindow extends JFrame {
 		textArea.replaceSelection("kala");
 		(StartWindow.container).add(textArea, BorderLayout.CENTER);
 
-		KosmoseOdysseia mang = new KosmoseOdysseia(textArea);
+		new KosmoseOdysseia(textArea);
 		JPanel paneel2 = new JPanel(new GridLayout(4, 8));
 		JPanel paneel3 = new JPanel(new FlowLayout());
 
