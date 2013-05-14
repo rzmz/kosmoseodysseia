@@ -1,3 +1,5 @@
+package kosmos;
+
 import java.awt.*;
 import java.io.IOException;
 

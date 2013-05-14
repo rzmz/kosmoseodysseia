@@ -1,3 +1,4 @@
 Juhan: 3
 Juku: 1
 Juhan: 6
+Rasmus: 2

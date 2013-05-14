@@ -1,3 +1,4 @@
+package kosmos;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+
 
 public class KosmoseOdysseia extends Nupukuular {
 

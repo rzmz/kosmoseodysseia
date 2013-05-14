@@ -1,5 +1,7 @@
+package kosmos;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 
 public class Klahvikuular implements KeyListener {
 	static boolean isLeftDown = false;

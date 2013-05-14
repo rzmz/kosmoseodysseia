@@ -1,5 +1,6 @@
+package kosmos;
+
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -17,29 +18,24 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import actions.*;
+
 public class StartWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
-	static JButton Start = new JButton("Start");
-	static JButton Options = new JButton("Options");
-	static JButton Highscore = new JButton("Highscore");
-	static JButton Exit = new JButton("Exit");
-	static JButton Test = new JButton("Test");
+	
+	static JButton Start = new JButton(new StartAction());
+	static JButton Options = new JButton(new OptionsAction());
+	static JButton Highscore = new JButton(new HighScoreAction());
+	static JButton Exit = new JButton(new ExitAction());
+	
 	static JButton MenuButtons[] = { Start, Options, Highscore, Exit };
 	static JFrame frame;
 	static Container container;
 	static Font font = new Font("Press Start 2P", Font.PLAIN, 9);
 
 	public StartWindow() throws FontFormatException, IOException {
-		GraphicsEnvironment ge = GraphicsEnvironment
-				.getLocalGraphicsEnvironment();
-		ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(
-				"PressStart2P.ttf")));
-		// GraphicsEnvironment e = GraphicsEnvironment
-		// .getLocalGraphicsEnvironment();
-		// String[] fontnames = e.getAvailableFontFamilyNames();
-		// System.out.println("\nFonts available on this platform: ");
-		// for (int i = 0; i < fontnames.length; i++)
-		// System.out.println(fontnames[i]);
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("PressStart2P.ttf")));
 
 		frame = new JFrame("Kosmose Odüsseia");
 		frame.setSize(new Dimension(600, 500));
@@ -56,6 +52,7 @@ public class StartWindow extends JFrame {
 	}
 
 	static class ImagePanel extends JPanel {
+		
 		private static final long serialVersionUID = 1L;
 		private Image img;
 
@@ -81,22 +78,17 @@ public class StartWindow extends JFrame {
 	}
 
 	static public void StartMenu() {
+		
 		container.removeAll();
 		JPanel MenuPanel = new JPanel(new GridLayout(4, 1));
-		JPanel BackgroundPanel = new ImagePanel(
-				new ImageIcon("space.png").getImage());
+		JPanel BackgroundPanel = new ImagePanel(new ImageIcon("space.png").getImage());
+
 		for (int i = 0; i < MenuButtons.length; i++) {
-			MenuButtons[i].addActionListener(new Nupukuular());
-			MenuButtons[i].setFont(font);
-			MenuButtons[i].setForeground(Color.WHITE);
-			MenuButtons[i].setBackground(Color.BLACK);
 			MenuPanel.add(MenuButtons[i]);
 		}
 
 		BackgroundPanel.add(MenuPanel, BorderLayout.CENTER);
 		container.add(BackgroundPanel);
-		// container.add(Test);
-		// Test.setBounds(0, 0, 2, 3);
 		container.repaint();
 		frame.setVisible(true);
 	}
