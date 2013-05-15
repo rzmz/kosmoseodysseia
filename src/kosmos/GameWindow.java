@@ -92,8 +92,6 @@ public class GameWindow extends JFrame {
 		textArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		textArea.selectAll();
 		
-//		textArea.replaceSelection("kala");
-		
 		(StartWindow.container).add(textArea, BorderLayout.CENTER);
 
 		new KosmoseOdysseia(textArea);

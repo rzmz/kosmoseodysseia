@@ -1,11 +1,10 @@
 package actions;
 
-import java.awt.Desktop;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
 
 import javax.swing.AbstractAction;
+
+import kosmos.HighScoreWindow;
 
 public class HighScoreAction extends AbstractAction {
 	
@@ -16,13 +15,6 @@ public class HighScoreAction extends AbstractAction {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if (Desktop.isDesktopSupported()) {
-			try {
-				Desktop.getDesktop().edit(new File("highscore.txt"));
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				System.err.println("Ei saa Highscore faili avada.");
-			}
-		}
+		new HighScoreWindow();
 	}
 }
