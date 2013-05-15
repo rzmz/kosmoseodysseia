@@ -46,3 +46,5 @@ Kuu - Maa looduslik kaaslane.
 heliopaus - Heliosfääri väline kiht, kus tähtedevaheline tuul ja päikesetuul on tasakaalus.
 supernoova - Oma arengu lõppjärku jõudnud täht, mille plahvatuse tagajärjel tähe heledus kasvab hetkeliselt miljoneid kordi.
 neutrontäht - Peamiselt neutronitest koosnev täht.
+Juhan Rasmus Risti - Kõva programmeerija. Üks Kosmoseodüsseia mängu autoritest.
+Rasmus Piho - Keskmisel tasemel programmeerija. Üks Kosmoseodüsseia mängu autoritest.
