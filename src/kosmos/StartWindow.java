@@ -1,6 +1,7 @@
 package kosmos;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -8,11 +9,14 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -62,8 +66,7 @@ public class StartWindow extends JFrame {
 
 		public ImagePanel(Image img) {
 			this.img = img;
-			Dimension size = new Dimension(img.getWidth(null),
-					img.getHeight(null));
+			Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
 			setPreferredSize(size);
 			setMinimumSize(size);
 			setMaximumSize(size);
@@ -80,14 +83,23 @@ public class StartWindow extends JFrame {
 	static public void StartMenu() {
 		
 		container.removeAll();
+		
 		JPanel MenuPanel = new JPanel(new GridLayout(4, 1));
+		
+		MenuPanel.setBackground(new Color(Color.TRANSLUCENT));
+		
 		JPanel BackgroundPanel = new ImagePanel(new ImageIcon("space.png").getImage());
+		BackgroundPanel.setLayout(new GridBagLayout());
 
 		for (int i = 0; i < MenuButtons.length; i++) {
+			MenuButtons[i].setForeground(Color.WHITE);
+			MenuButtons[i].setOpaque(false);
+			MenuButtons[i].setContentAreaFilled(false);
+			MenuButtons[i].setBorderPainted(false);
 			MenuPanel.add(MenuButtons[i]);
 		}
-
-		BackgroundPanel.add(MenuPanel, BorderLayout.CENTER);
+		
+		BackgroundPanel.add(MenuPanel, new GridBagConstraints());
 		container.add(BackgroundPanel);
 		container.repaint();
 		frame.setVisible(true);

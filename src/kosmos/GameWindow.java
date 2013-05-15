@@ -41,22 +41,20 @@ public class GameWindow extends JFrame {
 	static JButton Uu = new JButton("Ü");
 	static JButton X = new JButton("X");
 	static JButton Y = new JButton("Y");
-	static JButton nupud[] = { A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P,
-			Q, R, S, Ss, Z, Zz, T, U, V, W, Oo, Aa, Oi, Uu, X, Y };
-	// static char tahed[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-	// 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 'š', 'z', 'ž', 't',
-	// 'u', 'v', 'w', 'õ', 'ä', 'ö', 'ü', 'x', 'y' };
+	static JButton nupud[] = { A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, Ss, Z, Zz, T, U, V, W, Oo, Aa, Oi, Uu, X, Y };
+
 	static JDialog Loading;
-	JLabel LoadingText = new JLabel("MESSAGE");
+	JLabel LoadingText = new JLabel();
 
 	public GameWindow() throws FontFormatException, IOException {
+
 		// Loading dialoog;
-		Loading = new JDialog(StartWindow.frame, true);
+		Loading = new JDialog(this, true);
 		Loading.setUndecorated(true);
 		Loading.getContentPane().setBackground(Color.BLACK);
 		LoadingText.setForeground(Color.WHITE);
 		LoadingText.setFont(StartWindow.font);
-		Loading.setLocation(750, 380);
+		Loading.setLocation(1050, 480);
 		Loading.getContentPane().add(LoadingText);
 		Loading.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Loading.setSize(100, 30);
@@ -64,11 +62,11 @@ public class GameWindow extends JFrame {
 		Thread stuffToDo = new Thread() {
 			public void run() {
 				try {
-					LoadingText.setText("Loading...");
+					LoadingText.setText("Tegutsen...");
 					Thread.sleep(1000);
 					Loading.dispose();
 				} catch (Exception e) {
-
+					System.out.println("Error in Gamewindow: " + e);
 				}
 			}
 		};
@@ -93,7 +91,9 @@ public class GameWindow extends JFrame {
 		textArea.setWrapStyleWord(true);
 		textArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		textArea.selectAll();
-		textArea.replaceSelection("kala");
+		
+//		textArea.replaceSelection("kala");
+		
 		(StartWindow.container).add(textArea, BorderLayout.CENTER);
 
 		new KosmoseOdysseia(textArea);
