@@ -74,9 +74,9 @@ public class Sound {
 					byte[] buf = new byte[line.getBufferSize()];
 
 					while ((num_read = stream.read(buf, 0, buf.length)) >= 0
-							&& run && muted == false) {
+							&& run) {
+						mute_control.setValue(muted);
 						int offset = 0;
-
 						while (offset < num_read) {
 							offset += line
 									.write(buf, offset, num_read - offset);

@@ -42,6 +42,9 @@ public class GameWindow extends JFrame {
 	static JButton X = new JButton("X");
 	static JButton Y = new JButton("Y");
 	static JButton nupud[] = { A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, Ss, Z, Zz, T, U, V, W, Oo, Aa, Oi, Uu, X, Y };
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	int width = (int)Math.round(screenSize.getWidth());
+	int height = (int)Math.round(screenSize.getHeight());
 
 	static JDialog Loading;
 	JLabel LoadingText = new JLabel();
@@ -54,7 +57,7 @@ public class GameWindow extends JFrame {
 		Loading.getContentPane().setBackground(Color.BLACK);
 		LoadingText.setForeground(Color.WHITE);
 		LoadingText.setFont(StartWindow.font);
-		Loading.setLocation(1050, 480);
+		Loading.setLocationRelativeTo(StartWindow.frame);
 		Loading.getContentPane().add(LoadingText);
 		Loading.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Loading.setSize(100, 30);

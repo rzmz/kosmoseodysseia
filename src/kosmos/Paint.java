@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -28,7 +30,6 @@ public class Paint extends JPanel {
 	// static AffineTransformOp op;
 	// static int p = 0;
 	static int skoor = 0;
-
 	// double rotationRequired;
 	// static double locationX;
 	// static double locationY;

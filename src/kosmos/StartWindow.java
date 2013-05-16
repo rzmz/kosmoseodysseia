@@ -45,6 +45,7 @@ public class StartWindow extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
+		frame.setUndecorated(true);
 
 		container = frame.getContentPane();
 		container.setLayout(new BorderLayout());
