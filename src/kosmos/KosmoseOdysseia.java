@@ -127,16 +127,11 @@ public class KosmoseOdysseia extends Nupukuular {
 						a + v1.length + kirjeldus.length() + error.length());
 
 				try {
-					getTextArea()
-							.replaceRange(
-									error,
-									a + v1.length + kirjeldus.length(),
-									a + v1.length + kirjeldus.length()
-											+ error.length());
+					getTextArea().replaceRange(error, a + v1.length + kirjeldus.length(), a + v1.length + kirjeldus.length() + error.length());
 				} catch (IllegalArgumentException e) {
 					e.printStackTrace();
-					System.exit(0);
 				}
+				
 				int sp = sona.length();
 				for (int i = 0; i < sp; i++) {
 					char aChar = taht.charAt(0);
