@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -13,6 +15,8 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+
+import resources.ResourceLoader;
 
 public class KosmoseOdysseia extends Nupukuular {
 
@@ -35,31 +39,37 @@ public class KosmoseOdysseia extends Nupukuular {
 		setTextArea(textArea);
 	}
 
-	public static String[] LoeFail(String fileName) {
-		FileReader fin;
+	public static String[] LoeFail(String fileName, boolean txtCreate) {
+		// InputStreamReader fin = null;
+		Object fin = null;
+		Scanner src=null;
 		try {
-			fin = new FileReader(fileName);
-			Scanner src = new Scanner(fin);
-			ArrayList<String> lines = new ArrayList<String>();
-			while (src.hasNext()) {
-				lines.add(src.nextLine());
+			if (fileName == "words.txt" || txtCreate) {
+				fin = new InputStreamReader(
+						ResourceLoader.getResStream(fileName), "UTF-8");
+				src = new Scanner((InputStreamReader) fin);
+			} else {
+				fin = new FileReader(fileName);
+				src = new Scanner((FileReader) fin);
 			}
-			String[] words = new String[lines.size()];
-			lines.toArray(words);
-			src.close();
-			return words;
-		} catch (FileNotFoundException e) {
-			System.out.println("VIGA: Faili ei leitud (" + fileName + ")");
+		} catch (UnsupportedEncodingException | FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		return new String[] { "" };
+		ArrayList<String> lines = new ArrayList<String>();
+		while (src.hasNext()) {
+			lines.add(src.nextLine());
+		}
+		String[] words = new String[lines.size()];
+		lines.toArray(words);
+		src.close();
+		return words;
 	}
 
 	public static void Alusta() throws InterruptedException {
 
 		// Sõnade listi lugemine failist
 
-		String sonad[] = LoeFail("resources\\words.txt");
+		String sonad[] = LoeFail("words.txt",false);
 
 		// Juhusliku sõna valimine koos vihjega
 		Random rand = new Random();
@@ -129,7 +139,7 @@ public class KosmoseOdysseia extends Nupukuular {
 							+ error.length());
 		}
 		isBeginning = false;
-		Paint.explosionStart=true;
+		Paint.explosionStart = true;
 	}
 
 	private static void clearTextArea() {
@@ -200,7 +210,7 @@ public class KosmoseOdysseia extends Nupukuular {
 		} else if (katseid == lubatudKatseteArv) {
 			theEnd("Sa kaotasid..\nSõna oli '" + sona
 					+ "'.\nKas lisad oma tulemuse edetabelisse?", "Boohoo :(");
-			Paint.explosionEnded=false;
+			Paint.explosionEnded = false;
 		}
 	}
 
@@ -214,6 +224,8 @@ public class KosmoseOdysseia extends Nupukuular {
 				while (nimi == "") {
 					nimi = nameInputDialog();
 				}
+				// OutputStream välja = new FileOutputStream(
+				// ResourceLoader.getResStream("highscore.txt"), "UTF-8");
 				PrintWriter out = new PrintWriter(new BufferedWriter(
 						new FileWriter("highscore.txt", true)));
 				out.println(nimi + ": " + String.valueOf(Paint.skoor));

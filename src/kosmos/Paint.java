@@ -6,11 +6,9 @@ import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
 import java.awt.image.ImageProducer;
 import java.awt.image.RGBImageFilter;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import resources.ResourceLoader;
 
 public class Paint extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -19,9 +17,9 @@ public class Paint extends JPanel {
 	static BufferedImage mutebutton;
 	static BufferedImage SoundON;
 	static BufferedImage SoundOFF;
-	static String mutebuttonpath = "resources\\SoundON.png";
-	static String SoundONpath = "resources\\SoundON.png";
-	static String SoundOFFpath = "resources\\SoundOFF.png";
+	static String mutebuttonpath = "SoundON.png";
+	static String SoundONpath = "SoundON.png";
+	static String SoundOFFpath = "SoundOFF.png";
 	int x = -1200;
 	int y = -800;
 	int deltaX0 = 1;
@@ -40,7 +38,7 @@ public class Paint extends JPanel {
 	public void playExplosion(Graphics g, Image[] frames) {
 		if (explosionStart) {
 			Thread ExplosionPlay = new Thread(
-					(new Sound("resources\\explosion.wav", false)).play);
+					(new Sound("explosion.wav", false)).play);
 			ExplosionPlay.start();
 		}
 		explosionStart = false;
@@ -78,22 +76,18 @@ public class Paint extends JPanel {
 	}
 
 	public static void ImagePanel() {
-		try {
-			for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 4; i++) {
 
-				explosionFrames[i] = makeColorTransparent(
-						ImageIO.read(new File("resources\\frame" + (i + 1) + ".png")),
-						Color.WHITE);
-			}
-			space = ImageIO.read(new File("resources\\space.png"));
-			rocket = ImageIO.read(new File("resources\\rocket.png"));
-			SoundON = ImageIO.read(new File(SoundONpath));
-			SoundOFF = ImageIO.read(new File(SoundOFFpath));
-			if (mutebutton == null)
-				mutebutton = SoundON;
-		} catch (IOException e) {
-			e.printStackTrace();
+			explosionFrames[i] = makeColorTransparent(
+					ResourceLoader.getImage("frame" + (i + 1) + ".png"),
+					Color.WHITE);
 		}
+		space = ResourceLoader.getImage("space.png");
+		rocket = ResourceLoader.getImage("rocket.png");
+		SoundON = ResourceLoader.getImage(SoundONpath);
+		SoundOFF = ResourceLoader.getImage(SoundOFFpath);
+		if (mutebutton == null)
+			mutebutton = SoundON;
 	}
 
 	@Override

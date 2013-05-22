@@ -1,7 +1,10 @@
 package kosmos;
 
 import java.io.*;
+
 import javax.sound.sampled.*;
+
+import resources.ResourceLoader;
 
 public class Sound {
 	static boolean muted = false;
@@ -23,11 +26,11 @@ public class Sound {
 	final Runnable play = new Runnable() {
 		public void run() {
 			try {
-				File sound = new File(filepath);
-				if (sound.getName().toLowerCase().contains(".wav")) {
-					AudioInputStream stream = AudioSystem
-							.getAudioInputStream(sound);
-
+				if (filepath.contains(".wav")) {
+					AudioInputStream stream = null;
+					stream = AudioSystem
+							.getAudioInputStream(new BufferedInputStream(
+									ResourceLoader.getResStream(filepath)));
 					AudioFormat format = stream.getFormat();
 
 					if (format.getEncoding() != AudioFormat.Encoding.PCM_SIGNED) {
@@ -42,7 +45,6 @@ public class Sound {
 						stream = AudioSystem
 								.getAudioInputStream(format, stream);
 					}
-
 					SourceDataLine.Info info = new DataLine.Info(
 							SourceDataLine.class, stream.getFormat(),
 							(int) (stream.getFrameLength() * format
@@ -101,8 +103,9 @@ public class Sound {
 				}
 			} catch (FileNotFoundException ex) {
 				System.err.println("Soundi faili ei leitud.");
-			} catch (Exception ex) {
+			} catch (Exception e) {
 				System.err.println("Viga soundiga.");
+				e.printStackTrace();
 			}
 		}
 	};

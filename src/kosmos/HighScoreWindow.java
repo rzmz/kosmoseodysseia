@@ -9,11 +9,12 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import resources.ResourceLoader;
 
 import actions.BackButtonAction;
 
@@ -23,19 +24,20 @@ public class HighScoreWindow extends JFrame {
 
 	private static final long serialVersionUID = -3743025448866513282L;
 
-	public HighScoreWindow(){
+	public HighScoreWindow() {
 		StartWindow.container.removeAll();
 		StartWindow.container.revalidate();
 		StartWindow.container.repaint();
-		
-		JPanel BackgroundPanel = new ImagePanel(new ImageIcon("resources\\space.png").getImage());
+
+		JPanel BackgroundPanel = new ImagePanel(ResourceLoader.getImage("space.png"));
 		BackgroundPanel.setLayout(new GridBagLayout());
-		
+
 		JPanel highScorePanel = new JPanel();
-		highScorePanel.setLayout(new BoxLayout(highScorePanel, BoxLayout.Y_AXIS));
+		highScorePanel
+				.setLayout(new BoxLayout(highScorePanel, BoxLayout.Y_AXIS));
 		highScorePanel.setOpaque(false);
 		highScorePanel.setBackground(new Color(Color.TRANSLUCENT));
-		String highscores[] = KosmoseOdysseia.LoeFail("resources\\highscore.txt");
+		String highscores[] = KosmoseOdysseia.LoeFail("highscore.txt",false);
 
 		JLabel heading = new JLabel("Edetabel");
 		heading.setForeground(Color.WHITE);
@@ -45,44 +47,46 @@ public class HighScoreWindow extends JFrame {
 		JLabel divider = new JLabel("--------------------");
 		divider.setForeground(Color.WHITE);
 		divider.setFont(StartWindow.font);
-		
+
 		highScorePanel.add(divider);
 
 		HashMap<Integer, String> highScoreMap = new HashMap<Integer, String>();
 		ScoreComparator cmp = new ScoreComparator();
-		TreeMap<Integer, String> sortedHighscores = new TreeMap<Integer, String>(cmp);
-				
-		for(String scorerow : highscores){
+		TreeMap<Integer, String> sortedHighscores = new TreeMap<Integer, String>(
+				cmp);
+
+		for (String scorerow : highscores) {
 			String[] ns = scorerow.split(": ");
 			highScoreMap.put(new Integer(ns[1]), ns[0]);
 		}
-		
+
 		sortedHighscores.putAll(highScoreMap);
 		Set<Entry<Integer, String>> it = sortedHighscores.entrySet();
-		
+
 		Integer u = 1;
-		
-		for(Entry<Integer, String> entry : it){
-			JLabel score = new JLabel(u.toString() + ": " + entry.getValue() + " (" + entry.getKey().toString() + ")");
+
+		for (Entry<Integer, String> entry : it) {
+			JLabel score = new JLabel(u.toString() + ": " + entry.getValue()
+					+ " (" + entry.getKey().toString() + ")");
 			score.setForeground(Color.WHITE);
 			score.setFont(StartWindow.font);
 			highScorePanel.add(score);
 			u++;
 		}
-		
+
 		JButton back = new JButton("<< Tagasi");
 		back.addActionListener(new BackButtonAction());
 		back.setFont(StartWindow.font);
-		
+
 		highScorePanel.add(divider);
-		
+
 		back.setForeground(Color.WHITE);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
 
 		highScorePanel.add(back);
-		
+
 		BackgroundPanel.add(highScorePanel, new GridBagConstraints());
 		StartWindow.container.add(BackgroundPanel);
 		StartWindow.container.repaint();
