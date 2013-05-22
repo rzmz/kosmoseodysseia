@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 
 public class KosmoseOdysseia extends Nupukuular {
 
-	private static int lubatudKatseteArv = 6;
+	static int lubatudKatseteArv = 1;
 	private static JTextArea _textArea;
 	static int a = 33;
 	static List<Integer> ArvatudSonadeIndeksid = new ArrayList<Integer>();
@@ -29,6 +29,7 @@ public class KosmoseOdysseia extends Nupukuular {
 	static char sonaCharArray[];
 	static String kirjeldus;
 	static boolean isBeginning;
+	static Object obj = new Object();
 
 	public KosmoseOdysseia(JTextArea textArea) {
 		setTextArea(textArea);
@@ -128,6 +129,7 @@ public class KosmoseOdysseia extends Nupukuular {
 							+ error.length());
 		}
 		isBeginning = false;
+		Paint.explosionStart=true;
 	}
 
 	private static void clearTextArea() {
@@ -198,10 +200,12 @@ public class KosmoseOdysseia extends Nupukuular {
 		} else if (katseid == lubatudKatseteArv) {
 			theEnd("Sa kaotasid..\nSõna oli '" + sona
 					+ "'.\nKas lisad oma tulemuse edetabelisse?", "Boohoo :(");
+			Paint.explosionEnded=false;
 		}
 	}
 
 	public static void theEnd(String message, String topic) {
+		isBeginning = true;
 		int reply = JOptionPane.showConfirmDialog(null, message, topic,
 				JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION) {
@@ -262,10 +266,10 @@ public class KosmoseOdysseia extends Nupukuular {
 		ArvatudSonadeIndeksid.add(sonaindeks);
 		eelnevsona = sona;
 		try {
-			if (ArvatudSonadeIndeksid.size() == 50)
+			if (ArvatudSonadeIndeksid.size() == 50) {
 				theEnd("Sa võitsid!!\nKas lisad oma tulemuse edetabelisse?",
 						"Woohoo!!");
-			else
+			} else
 				Alusta();
 		} catch (InterruptedException e) {
 			e.printStackTrace();

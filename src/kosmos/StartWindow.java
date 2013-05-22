@@ -49,8 +49,9 @@ public class StartWindow extends JFrame {
 
 		container = frame.getContentPane();
 		container.setLayout(new BorderLayout());
-		Thread SoundPlay=new Thread(Sound.play);
-		SoundPlay.start();
+//		Sound.filepath="Music.wav";
+		Thread MusicPlay=new Thread((new Sound("Music.wav",true)).play);
+		MusicPlay.start();
 		StartMenu();
 
 	}

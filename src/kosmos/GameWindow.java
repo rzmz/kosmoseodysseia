@@ -48,6 +48,8 @@ public class GameWindow extends JFrame {
 
 	static JDialog Loading;
 	JLabel LoadingText = new JLabel();
+	
+	static Paint obj = new Paint();
 
 	public GameWindow() throws FontFormatException, IOException {
 		KosmoseOdysseia.isBeginning=true;
@@ -80,7 +82,7 @@ public class GameWindow extends JFrame {
 		(StartWindow.container).removeAll();
 
 		Paint.ImagePanel();
-		Paint obj = new Paint();
+//		Paint obj = new Paint();
 		obj.setPreferredSize(new Dimension(350, 320));
 		(StartWindow.container).revalidate();
 		(StartWindow.container).repaint();

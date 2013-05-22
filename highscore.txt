@@ -5,3 +5,4 @@ Rasmus: 2
 Rasmus: 4
 Rasmus: 9
 Juss: 2
+Juhan: 0

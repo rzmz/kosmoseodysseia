@@ -10,14 +10,20 @@ public class Sound {
 	static boolean run = true;
 	static double waitSeconds = 0.0d;
 
-	static boolean looped_forever = true;
+	boolean looped_forever = true;
 	static int loop_times = 0;
 	static int loops_done = 0;
+	String filepath;
 
-	final static Runnable play = new Runnable() {
+	public Sound(String filepath, boolean looped) {
+		this.filepath = filepath;
+		this.looped_forever = looped;
+	}
+
+	final Runnable play = new Runnable() {
 		public void run() {
 			try {
-				File sound = new File("Music.wav");
+				File sound = new File(filepath);
 				if (sound.getName().toLowerCase().contains(".wav")) {
 					AudioInputStream stream = AudioSystem
 							.getAudioInputStream(sound);
