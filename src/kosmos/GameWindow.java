@@ -50,6 +50,7 @@ public class GameWindow extends JFrame {
 	JLabel LoadingText = new JLabel();
 
 	public GameWindow() throws FontFormatException, IOException {
+		KosmoseOdysseia.isBeginning=true;
 
 		// Loading dialoog;
 		Loading = new JDialog(this, true);

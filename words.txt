@@ -35,7 +35,7 @@ Päike - Meie Päikesesüsteemi täht.
 Maa - Ainuke teadaolev planeet Universumis, kus leidub elu.
 Linnutee - Meie galaktika nimi.
 Jupiter - Päikesesüsteemi kõige suurem planeet.
-Merkuur - Päikesele kõige lühem ning kõige väiksem Päikesesüsteemi planeet.
+Merkuur - Päikesele kõige lähim ning Päikesesüsteemi väikseim planeet.
 Veenus - Maaga peaaegu ühesuurune ning meile lähim planeet.
 Marss - Päikesesüsteemi neljas planeet.
 Saturn - Päikesesüsteemi kuues planeet.

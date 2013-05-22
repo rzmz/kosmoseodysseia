@@ -1,7 +1,7 @@
 package kosmos;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 
 public class Klahvikuular implements KeyListener {
 	static boolean isLeftDown = false;
@@ -145,12 +145,12 @@ public class Klahvikuular implements KeyListener {
 			(GameWindow.Y).setEnabled(false);
 			break;
 		default:
-			System.out.println(kood);
-			
-		switch (kood) {
+			// System.out.println(kood);
+
+			switch (kood) {
 			case 32:
 				Nupukuular.taht = " ";
-			break;
+				break;
 			case 38:
 				isUpDown = true;
 				break;

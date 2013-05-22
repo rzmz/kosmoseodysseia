@@ -1,4 +1,5 @@
 package kosmos;
+
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,7 +14,6 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-
 public class KosmoseOdysseia extends Nupukuular {
 
 	private static int lubatudKatseteArv = 6;
@@ -26,9 +26,11 @@ public class KosmoseOdysseia extends Nupukuular {
 	static int katseid;
 	static String arvatudTahed;
 	static String sona;
+	static String eelnevsona;
 	static char v1[];
 	static char s2[];
 	static String kirjeldus;
+	static boolean isBeginning;
 
 	public KosmoseOdysseia(JTextArea textArea) {
 		setTextArea(textArea);
@@ -40,23 +42,22 @@ public class KosmoseOdysseia extends Nupukuular {
 			fin = new FileReader(fileName);
 			Scanner src = new Scanner(fin);
 			ArrayList<String> lines = new ArrayList<String>();
-			while(src.hasNext()){
+			while (src.hasNext()) {
 				lines.add(src.nextLine());
 			}
 			String[] words = new String[lines.size()];
 			lines.toArray(words);
 			src.close();
 			return words;
-		}
-		catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			System.out.println("VIGA: Faili ei leitud (" + fileName + ")");
 			e.printStackTrace();
 		}
-		return new String[]{""};
+		return new String[] { "" };
 	}
-	
+
 	public static void Alusta() throws InterruptedException {
-		
+
 		// Sõnade listi lugemine failist
 
 		String sonad[] = LoeFail("words.txt");
@@ -109,7 +110,15 @@ public class KosmoseOdysseia extends Nupukuular {
 		for (int i = 0; i < 60; i++) {
 			getTextArea().append(" ");
 		}
-			}
+
+		if (isBeginning == false) {
+			String error = "'" + eelnevsona + "' oli õige!     ";
+			getTextArea().replaceRange(error,
+					a + v1.length + kirjeldus.length(),
+					a + v1.length + kirjeldus.length() + error.length());
+		}
+		isBeginning = false;
+	}
 
 	private static void clearTextArea() {
 		getTextArea().selectAll();
@@ -120,18 +129,24 @@ public class KosmoseOdysseia extends Nupukuular {
 		if (sona.contains(taht)) {
 			if (arvatudTahed.contains(taht)) {
 			} else {
-				String error = "Õige!                                   ";
+				String error = "'" + taht.toUpperCase()
+						+ "' on õige!                      ";
 				getTextArea().replaceRange(
-						"                                      ",
+						"                                            ",
 						a + v1.length + kirjeldus.length(),
 						a + v1.length + kirjeldus.length() + error.length());
 
 				try {
-					getTextArea().replaceRange(error, a + v1.length + kirjeldus.length(), a + v1.length + kirjeldus.length() + error.length());
+					getTextArea()
+							.replaceRange(
+									error,
+									a + v1.length + kirjeldus.length(),
+									a + v1.length + kirjeldus.length()
+											+ error.length());
 				} catch (IllegalArgumentException e) {
 					e.printStackTrace();
 				}
-				
+
 				int sp = sona.length();
 				for (int i = 0; i < sp; i++) {
 					char aChar = taht.charAt(0);
@@ -145,10 +160,10 @@ public class KosmoseOdysseia extends Nupukuular {
 			if (arvatudTahed.contains(taht) == false) {
 				katseid += 1;
 				kuvaKatseid(false);
-				String error = "Vale! Tähte " + taht.toUpperCase()
-						+ " ei ole sõnas!     ";
+				String error = "Vale! Tähte '" + taht.toUpperCase()
+						+ "' ei ole sõnas!          ";
 				getTextArea().replaceRange(
-						"                                      ",
+						"                                           ",
 						a + v1.length + kirjeldus.length(),
 						a + v1.length + kirjeldus.length() + error.length());
 
@@ -173,15 +188,14 @@ public class KosmoseOdysseia extends Nupukuular {
 		if (tg1.equals(tg2)) {
 			GuessedRight();
 		} else if (katseid == lubatudKatseteArv) {
-			Kaotus(sona);
+			theEnd("Sa kaotasid..\nSõna oli '" + sona
+					+ "'.\nKas lisad oma tulemuse edetabelisse?", "Boohoo :(");
 		}
 	}
 
-	public static void Kaotus(String sona) {
-		int reply = JOptionPane.showConfirmDialog(null,
-				"Sa kaotasid..\nSõna oli '" + sona
-						+ "'.\nKas lisad oma tulemuse edetabelisse?",
-				"Boohoo :(", JOptionPane.YES_NO_OPTION);
+	public static void theEnd(String message, String topic) {
+		int reply = JOptionPane.showConfirmDialog(null, message, topic,
+				JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION) {
 			try {
 				String nimi = "";
@@ -214,21 +228,6 @@ public class KosmoseOdysseia extends Nupukuular {
 
 	}
 
-	public void Voit() {
-		int reply = JOptionPane.showConfirmDialog(null,
-				"Sa võitsid!\nKas mängime uuesti?", "Yeahh!",
-				JOptionPane.YES_NO_OPTION);
-		if (reply == JOptionPane.YES_OPTION) {
-			try {
-				Alusta();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		} else {
-			System.exit(0);
-		}
-	}
-
 	public static void kuvaKatseid(boolean isBeginning) {
 		if (isBeginning)
 			getTextArea()
@@ -253,10 +252,14 @@ public class KosmoseOdysseia extends Nupukuular {
 	public static void GuessedRight() {
 		Paint.skoor += 1;
 		ArvatudSonadeIndeksid.add(sonaindeks);
+		eelnevsona = sonaoriginaal;
 		try {
-			Alusta();
+			if (ArvatudSonadeIndeksid.size() == 50)
+				theEnd("Sa võitsid!!\nKas lisad oma tulemuse edetabelisse?",
+						"Woohoo!!");
+			else
+				Alusta();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
