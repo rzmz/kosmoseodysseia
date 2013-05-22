@@ -82,7 +82,6 @@ public class GameWindow extends JFrame {
 		(StartWindow.container).removeAll();
 
 		Paint.ImagePanel();
-//		Paint obj = new Paint();
 		obj.setPreferredSize(new Dimension(350, 320));
 		(StartWindow.container).revalidate();
 		(StartWindow.container).repaint();

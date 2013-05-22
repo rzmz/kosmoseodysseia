@@ -28,14 +28,14 @@ public class HighScoreWindow extends JFrame {
 		StartWindow.container.revalidate();
 		StartWindow.container.repaint();
 		
-		JPanel BackgroundPanel = new ImagePanel(new ImageIcon("space.png").getImage());
+		JPanel BackgroundPanel = new ImagePanel(new ImageIcon("resources\\space.png").getImage());
 		BackgroundPanel.setLayout(new GridBagLayout());
 		
 		JPanel highScorePanel = new JPanel();
 		highScorePanel.setLayout(new BoxLayout(highScorePanel, BoxLayout.Y_AXIS));
 		highScorePanel.setOpaque(false);
 		highScorePanel.setBackground(new Color(Color.TRANSLUCENT));
-		String highscores[] = KosmoseOdysseia.LoeFail("highscore.txt");
+		String highscores[] = KosmoseOdysseia.LoeFail("resources\\highscore.txt");
 
 		JLabel heading = new JLabel("Edetabel");
 		heading.setForeground(Color.WHITE);

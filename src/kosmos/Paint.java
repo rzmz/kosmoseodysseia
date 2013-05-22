@@ -19,9 +19,9 @@ public class Paint extends JPanel {
 	static BufferedImage mutebutton;
 	static BufferedImage SoundON;
 	static BufferedImage SoundOFF;
-	static String mutebuttonpath = "SoundON.png";
-	static String SoundONpath = "SoundON.png";
-	static String SoundOFFpath = "SoundOFF.png";
+	static String mutebuttonpath = "resources\\SoundON.png";
+	static String SoundONpath = "resources\\SoundON.png";
+	static String SoundOFFpath = "resources\\SoundOFF.png";
 	int x = -1200;
 	int y = -800;
 	int deltaX0 = 1;
@@ -40,7 +40,7 @@ public class Paint extends JPanel {
 	public void playExplosion(Graphics g, Image[] frames) {
 		if (explosionStart) {
 			Thread ExplosionPlay = new Thread(
-					(new Sound("explosion.wav", false)).play);
+					(new Sound("resources\\explosion.wav", false)).play);
 			ExplosionPlay.start();
 		}
 		explosionStart = false;
@@ -82,11 +82,11 @@ public class Paint extends JPanel {
 			for (int i = 0; i < 4; i++) {
 
 				explosionFrames[i] = makeColorTransparent(
-						ImageIO.read(new File("frame" + (i + 1) + ".png")),
+						ImageIO.read(new File("resources\\frame" + (i + 1) + ".png")),
 						Color.WHITE);
 			}
-			space = ImageIO.read(new File("space.png"));
-			rocket = ImageIO.read(new File("rocket.png"));
+			space = ImageIO.read(new File("resources\\space.png"));
+			rocket = ImageIO.read(new File("resources\\rocket.png"));
 			SoundON = ImageIO.read(new File(SoundONpath));
 			SoundOFF = ImageIO.read(new File(SoundOFFpath));
 			if (mutebutton == null)

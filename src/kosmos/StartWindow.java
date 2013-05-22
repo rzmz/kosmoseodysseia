@@ -40,7 +40,7 @@ public class StartWindow extends JFrame {
 		GraphicsEnvironment ge = GraphicsEnvironment
 				.getLocalGraphicsEnvironment();
 		ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(
-				"8bitoperator.ttf")));
+				"resources\\8bitoperator.ttf")));
 
 		frame = new JFrame("Kosmose Odüsseia");
 		frame.setSize(new Dimension(600, 500));
@@ -51,7 +51,7 @@ public class StartWindow extends JFrame {
 
 		container = frame.getContentPane();
 		container.setLayout(new BorderLayout());
-		Thread MusicPlay = new Thread((new Sound("Music.wav", true)).play);
+		Thread MusicPlay = new Thread((new Sound("resources\\Music.wav", true)).play);
 		MusicPlay.start();
 		StartMenu();
 
@@ -92,7 +92,7 @@ public class StartWindow extends JFrame {
 		MenuPanel.setBackground(new Color(Color.TRANSLUCENT));
 
 		JPanel BackgroundPanel = new ImagePanel(
-				new ImageIcon("space.png").getImage());
+				new ImageIcon("resources\\space.png").getImage());
 		BackgroundPanel.setLayout(new GridBagLayout());
 
 		for (int i = 0; i < MenuButtons.length; i++) {

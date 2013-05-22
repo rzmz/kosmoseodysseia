@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 
 public class KosmoseOdysseia extends Nupukuular {
 
-	static int lubatudKatseteArv = 1;
+	static int lubatudKatseteArv = 6;
 	private static JTextArea _textArea;
 	static int a = 33;
 	static List<Integer> ArvatudSonadeIndeksid = new ArrayList<Integer>();
@@ -59,7 +59,7 @@ public class KosmoseOdysseia extends Nupukuular {
 
 		// Sõnade listi lugemine failist
 
-		String sonad[] = LoeFail("words.txt");
+		String sonad[] = LoeFail("resources\\words.txt");
 
 		// Juhusliku sõna valimine koos vihjega
 		Random rand = new Random();
