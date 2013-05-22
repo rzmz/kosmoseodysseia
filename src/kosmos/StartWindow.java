@@ -25,20 +25,22 @@ import actions.*;
 
 public class StartWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
-	
+
 	static JButton Start = new JButton(new StartAction());
 	static JButton Options = new JButton(new OptionsAction());
 	static JButton Highscore = new JButton(new HighScoreAction());
 	static JButton Exit = new JButton(new ExitAction());
-	
+
 	static JButton MenuButtons[] = { Start, Options, Highscore, Exit };
 	static JFrame frame;
 	static Container container;
-	static Font font = new Font("Press Start 2P", Font.PLAIN, 9);
+	static Font font = new Font("8bitoperator Regular", Font.PLAIN, 9);
 
 	public StartWindow() throws FontFormatException, IOException {
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("PressStart2P.ttf")));
+		GraphicsEnvironment ge = GraphicsEnvironment
+				.getLocalGraphicsEnvironment();
+		ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(
+				"8bitoperator.ttf")));
 
 		frame = new JFrame("Kosmose Odüsseia");
 		frame.setSize(new Dimension(600, 500));
@@ -49,15 +51,14 @@ public class StartWindow extends JFrame {
 
 		container = frame.getContentPane();
 		container.setLayout(new BorderLayout());
-//		Sound.filepath="Music.wav";
-		Thread MusicPlay=new Thread((new Sound("Music.wav",true)).play);
+		Thread MusicPlay = new Thread((new Sound("Music.wav", true)).play);
 		MusicPlay.start();
 		StartMenu();
 
 	}
 
 	static class ImagePanel extends JPanel {
-		
+
 		private static final long serialVersionUID = 1L;
 		private Image img;
 
@@ -67,7 +68,8 @@ public class StartWindow extends JFrame {
 
 		public ImagePanel(Image img) {
 			this.img = img;
-			Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
+			Dimension size = new Dimension(img.getWidth(null),
+					img.getHeight(null));
 			setPreferredSize(size);
 			setMinimumSize(size);
 			setMaximumSize(size);
@@ -82,14 +84,15 @@ public class StartWindow extends JFrame {
 	}
 
 	static public void StartMenu() {
-		
+
 		container.removeAll();
-		
+
 		JPanel MenuPanel = new JPanel(new GridLayout(4, 1));
-		
+
 		MenuPanel.setBackground(new Color(Color.TRANSLUCENT));
-		
-		JPanel BackgroundPanel = new ImagePanel(new ImageIcon("space.png").getImage());
+
+		JPanel BackgroundPanel = new ImagePanel(
+				new ImageIcon("space.png").getImage());
 		BackgroundPanel.setLayout(new GridBagLayout());
 
 		for (int i = 0; i < MenuButtons.length; i++) {
@@ -97,9 +100,10 @@ public class StartWindow extends JFrame {
 			MenuButtons[i].setOpaque(false);
 			MenuButtons[i].setContentAreaFilled(false);
 			MenuButtons[i].setBorderPainted(false);
+			MenuButtons[i].setFont(font);
 			MenuPanel.add(MenuButtons[i]);
 		}
-		
+
 		BackgroundPanel.add(MenuPanel, new GridBagConstraints());
 		container.add(BackgroundPanel);
 		container.repaint();

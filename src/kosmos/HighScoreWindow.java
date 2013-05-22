@@ -39,10 +39,12 @@ public class HighScoreWindow extends JFrame {
 
 		JLabel heading = new JLabel("Edetabel");
 		heading.setForeground(Color.WHITE);
+		heading.setFont(StartWindow.font);
 
 		highScorePanel.add(heading);
 		JLabel divider = new JLabel("--------------------");
 		divider.setForeground(Color.WHITE);
+		divider.setFont(StartWindow.font);
 		
 		highScorePanel.add(divider);
 
@@ -63,12 +65,14 @@ public class HighScoreWindow extends JFrame {
 		for(Entry<Integer, String> entry : it){
 			JLabel score = new JLabel(u.toString() + ": " + entry.getValue() + " (" + entry.getKey().toString() + ")");
 			score.setForeground(Color.WHITE);
+			score.setFont(StartWindow.font);
 			highScorePanel.add(score);
 			u++;
 		}
 		
 		JButton back = new JButton("<< Tagasi");
 		back.addActionListener(new BackButtonAction());
+		back.setFont(StartWindow.font);
 		
 		highScorePanel.add(divider);
 		
