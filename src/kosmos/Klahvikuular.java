@@ -148,9 +148,6 @@ public class Klahvikuular implements KeyListener {
 			// System.out.println(kood);
 
 			switch (kood) {
-			case 32:
-				Nupukuular.taht = " ";
-				break;
 			case 38:
 				isUpDown = true;
 				break;

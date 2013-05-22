@@ -19,16 +19,14 @@ public class KosmoseOdysseia extends Nupukuular {
 	private static int lubatudKatseteArv = 6;
 	private static JTextArea _textArea;
 	static int a = 33;
-	static String sonaoriginaal;
 	static List<Integer> ArvatudSonadeIndeksid = new ArrayList<Integer>();
 	static int sonaindeks;
-	static String vihje;
 	static int katseid;
 	static String arvatudTahed;
 	static String sona;
 	static String eelnevsona;
-	static char v1[];
-	static char s2[];
+	static char vihjeCharArray[];
+	static char sonaCharArray[];
 	static String kirjeldus;
 	static boolean isBeginning;
 
@@ -73,12 +71,11 @@ public class KosmoseOdysseia extends Nupukuular {
 		// teeme tükkideks...
 		String[] sona_vihje = sona_koos_vihjega.split("-");
 
-		sonaoriginaal = sona_vihje[0].trim();
-		sona = sona_vihje[0].trim().toLowerCase();
+		sona = sona_vihje[0].trim();
 		kirjeldus = sona_vihje[1].trim();
 
 		// Tekitame tühikud
-		vihje = "";
+		String vihje = "";
 		int kriipse = sona.length() + 1;
 		for (int i = 1; i < kriipse; i++) {
 			vihje += "-";
@@ -89,18 +86,29 @@ public class KosmoseOdysseia extends Nupukuular {
 		// Alustame mängu
 		GameWindow.enableAllButtons();
 
-		v1 = vihje.toCharArray();
-		s2 = sona.toCharArray();
+		vihjeCharArray = vihje.toCharArray();
+		sonaCharArray = sona.toCharArray();
+
+		if (sona.contains(" ") || sona.contains("-")) {
+			for (int i = 0; i < sona.length(); i++) {
+				if (' ' == sonaCharArray[i]) {
+					vihjeCharArray[i] = ' ';
+				}
+				if ('-' == sonaCharArray[i]) {
+					vihjeCharArray[i] = '-';
+				}
+			}
+		}
 
 		// teeme tekstikasti tühjaks
 		clearTextArea();
 
 		String kokku = "";
 
-		for (int x = 0; x < v1.length; x++) {
-			kokku += v1[x];
+		for (int x = 0; x < vihjeCharArray.length; x++) {
+			kokku += vihjeCharArray[x];
 		}
-		if (Character.isUpperCase(sonaoriginaal.charAt(0))) {
+		if (Character.isUpperCase(sona.charAt(0))) {
 			getTextArea().append("Nimi: " + kokku);
 		} else {
 			getTextArea().append("Sõna: " + kokku);
@@ -113,9 +121,11 @@ public class KosmoseOdysseia extends Nupukuular {
 
 		if (isBeginning == false) {
 			String error = "'" + eelnevsona + "' oli õige!     ";
-			getTextArea().replaceRange(error,
-					a + v1.length + kirjeldus.length(),
-					a + v1.length + kirjeldus.length() + error.length());
+			getTextArea().replaceRange(
+					error,
+					a + vihjeCharArray.length + kirjeldus.length(),
+					a + vihjeCharArray.length + kirjeldus.length()
+							+ error.length());
 		}
 		isBeginning = false;
 	}
@@ -126,33 +136,32 @@ public class KosmoseOdysseia extends Nupukuular {
 	}
 
 	public static void Arva() {
-		if (sona.contains(taht)) {
+		if (sona.toLowerCase().contains(taht)) {
 			if (arvatudTahed.contains(taht)) {
 			} else {
 				String error = "'" + taht.toUpperCase()
 						+ "' on õige!                      ";
 				getTextArea().replaceRange(
 						"                                            ",
-						a + v1.length + kirjeldus.length(),
-						a + v1.length + kirjeldus.length() + error.length());
+						a + vihjeCharArray.length + kirjeldus.length(),
+						a + vihjeCharArray.length + kirjeldus.length()
+								+ error.length());
 
 				try {
-					getTextArea()
-							.replaceRange(
-									error,
-									a + v1.length + kirjeldus.length(),
-									a + v1.length + kirjeldus.length()
-											+ error.length());
+					getTextArea().replaceRange(
+							error,
+							a + vihjeCharArray.length + kirjeldus.length(),
+							a + vihjeCharArray.length + kirjeldus.length()
+									+ error.length());
 				} catch (IllegalArgumentException e) {
 					e.printStackTrace();
 				}
 
-				int sp = sona.length();
-				for (int i = 0; i < sp; i++) {
-					char aChar = taht.charAt(0);
-					char bChar = s2[i];
-					if (bChar == aChar) {
-						v1[i] = aChar;
+				for (int i = 0; i < sona.length(); i++) {
+					if (taht.charAt(0) == sonaCharArray[i]) {
+						vihjeCharArray[i] = taht.charAt(0);
+					} else if (taht.toUpperCase().charAt(0) == sonaCharArray[i]) {
+						vihjeCharArray[i] = taht.toUpperCase().charAt(0);
 					}
 				}
 			}
@@ -164,28 +173,27 @@ public class KosmoseOdysseia extends Nupukuular {
 						+ "' ei ole sõnas!          ";
 				getTextArea().replaceRange(
 						"                                           ",
-						a + v1.length + kirjeldus.length(),
-						a + v1.length + kirjeldus.length() + error.length());
+						a + vihjeCharArray.length + kirjeldus.length(),
+						a + vihjeCharArray.length + kirjeldus.length()
+								+ error.length());
 
-				getTextArea().replaceRange(error,
-						a + v1.length + kirjeldus.length(),
-						a + v1.length + kirjeldus.length() + error.length());
+				getTextArea().replaceRange(
+						error,
+						a + vihjeCharArray.length + kirjeldus.length(),
+						a + vihjeCharArray.length + kirjeldus.length()
+								+ error.length());
 				arvatudTahed += taht;
 			}
 		}
 		String S = "";
-		for (int x = 0; x < v1.length; x++) {
-			S += v1[x];
-		}
-		if (Character.isUpperCase(sonaoriginaal.charAt(0))) {
-			S = S.substring(0, 1).toUpperCase() + S.substring(1);
+		for (int x = 0; x < vihjeCharArray.length; x++) {
+			S += vihjeCharArray[x];
 		}
 		getTextArea().replaceRange(S, 6, 6 + S.length());
 		arvatudTahed += taht;
 
-		String tg1 = new String(v1);
-		String tg2 = new String(s2);
-		if (tg1.equals(tg2)) {
+		String vihje = new String(vihjeCharArray);
+		if (vihje.equals(sona)) {
 			GuessedRight();
 		} else if (katseid == lubatudKatseteArv) {
 			theEnd("Sa kaotasid..\nSõna oli '" + sona
@@ -236,8 +244,8 @@ public class KosmoseOdysseia extends Nupukuular {
 		else
 			getTextArea().replaceRange(
 					Integer.toString(lubatudKatseteArv - katseid),
-					31 + v1.length + kirjeldus.length(),
-					32 + v1.length + kirjeldus.length());
+					31 + vihjeCharArray.length + kirjeldus.length(),
+					32 + vihjeCharArray.length + kirjeldus.length());
 
 	}
 
@@ -252,7 +260,7 @@ public class KosmoseOdysseia extends Nupukuular {
 	public static void GuessedRight() {
 		Paint.skoor += 1;
 		ArvatudSonadeIndeksid.add(sonaindeks);
-		eelnevsona = sonaoriginaal;
+		eelnevsona = sona;
 		try {
 			if (ArvatudSonadeIndeksid.size() == 50)
 				theEnd("Sa võitsid!!\nKas lisad oma tulemuse edetabelisse?",
@@ -266,12 +274,12 @@ public class KosmoseOdysseia extends Nupukuular {
 
 	static String nameInputDialog() {
 		Object[] possibilities = null;
-		String s = (String) JOptionPane.showInputDialog(StartWindow.frame,
+		String nimi = (String) JOptionPane.showInputDialog(StartWindow.frame,
 				"Sisesta oma nimi: ", "Highscore!!", JOptionPane.PLAIN_MESSAGE,
 				null, possibilities, "");
 
-		if ((s != null) && (s.length() > 0)) {
-			return s;
+		if ((nimi != null) && (nimi.length() > 0)) {
+			return nimi;
 		} else {
 			return "";
 		}
