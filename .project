@@ -14,31 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>explosion.wav</name>
-			<type>1</type>
-			<location>C:/Users/Juhan/git/kosmoseodysseia/explosion.wav</location>
-		</link>
-		<link>
-			<name>frame1.png</name>
-			<type>1</type>
-			<location>C:/Users/Juhan/git/kosmoseodysseia/frame1.png</location>
-		</link>
-		<link>
-			<name>frame2.png</name>
-			<type>1</type>
-			<location>C:/Users/Juhan/git/kosmoseodysseia/frame2.png</location>
-		</link>
-		<link>
-			<name>frame3.png</name>
-			<type>1</type>
-			<location>C:/Users/Juhan/git/kosmoseodysseia/frame3.png</location>
-		</link>
-		<link>
-			<name>frame4.png</name>
-			<type>1</type>
-			<location>C:/Users/Juhan/git/kosmoseodysseia/frame4.png</location>
-		</link>
-	</linkedResources>
 </projectDescription>
